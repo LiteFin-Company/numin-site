@@ -59,7 +59,7 @@ export default function Hero() {
           {/* Foto da pessoa */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/hero-pessoa.png?v=2"
+            src="/hero-pessoa.webp"
             alt="Pessoa usando o Numin no celular"
             className="relative block w-full drop-shadow-2xl"
           />
