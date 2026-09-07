@@ -2,16 +2,16 @@ import { ArrowRight, Clock, ShieldCheck, Eye, Users } from "lucide-react";
 import { SITE } from "@/lib/site";
 
 const BENEFITS = [
-  { icon: Clock, title: "Menos tempo com planilhas", pos: "-left-3 top-1/3 md:-left-12", delay: "0s" },
-  { icon: ShieldCheck, title: "Decisões com segurança", pos: "-right-3 top-24 md:-right-6", delay: "1s" },
-  { icon: Users, title: "Fácil para toda a equipe", pos: "-right-3 bottom-24 md:-right-6", delay: "1.5s" },
-  { icon: Eye, title: "Clareza do começo ao fim", pos: "-left-3 bottom-8 md:-left-12", delay: "2s" },
+  { icon: Clock, title: "Menos tempo com planilhas", pos: "flex -left-3 top-1/3 md:-left-12", delay: "0s" },
+  { icon: ShieldCheck, title: "Decisões com segurança", pos: "hidden sm:flex -right-3 top-24 md:-right-6", delay: "1s" },
+  { icon: Users, title: "Fácil para toda a equipe", pos: "flex -right-3 bottom-24 md:-right-6", delay: "1.5s" },
+  { icon: Eye, title: "Clareza do começo ao fim", pos: "hidden sm:flex -left-3 bottom-8 md:-left-12", delay: "2s" },
 ];
 
 function FloatCard({ icon: Icon, title, className, delay }) {
   return (
     <div
-      className={`floaty absolute flex items-center gap-2 rounded-xl border border-white/25 bg-white/10 px-3 py-2 shadow-[0_14px_32px_-16px_rgba(9,25,54,0.55)] backdrop-blur-md ${className}`}
+      className={`floaty absolute items-center gap-2 rounded-xl border border-white/25 bg-white/10 px-3 py-2 shadow-[0_14px_32px_-16px_rgba(9,25,54,0.55)] backdrop-blur-md ${className}`}
       style={{ animationDelay: delay }}
     >
       <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-white/15 text-white">
@@ -32,14 +32,14 @@ export default function Hero() {
       <div className="container-x relative grid items-end gap-12 pt-28 md:grid-cols-[1.2fr_0.8fr] md:pt-36">
         {/* Left — texto */}
         <div className="self-center pb-16 md:pb-24">
-          <h1 className="text-[47px] font-bold leading-[1.05] tracking-tight text-white md:text-[59px] lg:text-[71px]">
+          <h1 className="hero-in text-[47px] font-bold leading-[1.05] tracking-tight text-white md:text-[59px] lg:text-[71px]" style={{ animationDelay: "0.05s" }}>
             O financeiro da sua empresa, simples e sob controle
           </h1>
-          <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-white md:text-[19px]">
+          <p className="hero-in mt-6 max-w-xl text-[17px] leading-relaxed text-white md:text-[19px]" style={{ animationDelay: "0.13s" }}>
             Sistema de controle financeiro feito para empresas de serviços. Menos tempo com
             planilhas, mais clareza para decidir.
           </p>
-          <div className="mt-9 flex flex-wrap gap-3">
+          <div className="hero-in mt-9 flex flex-wrap gap-3" style={{ animationDelay: "0.21s" }}>
             <a href={SITE.signupUrl} className="btn btn-white btn-lg">
               Começar agora <ArrowRight size={18} />
             </a>
@@ -47,7 +47,7 @@ export default function Hero() {
               Ver planos
             </a>
           </div>
-          <p className="mt-4 text-[13px] text-white/80">
+          <p className="hero-in mt-4 text-[13px] text-white/80" style={{ animationDelay: "0.29s" }}>
             Sem cartão de crédito para começar · Cancele quando quiser
           </p>
         </div>
@@ -61,7 +61,8 @@ export default function Hero() {
           <img
             src="/hero-pessoa.webp"
             alt="Pessoa usando o Numin no celular"
-            className="relative block w-full drop-shadow-2xl"
+            className="hero-in relative block w-full drop-shadow-2xl"
+            style={{ animationDelay: "0.15s" }}
           />
           {BENEFITS.map((b) => (
             <FloatCard key={b.title} icon={b.icon} title={b.title} className={b.pos} delay={b.delay} />
