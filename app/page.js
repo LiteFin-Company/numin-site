@@ -5,7 +5,7 @@ import ContactForm from "@/components/ContactForm";
 import Reveal from "@/components/Reveal";
 import Pricing from "@/components/Pricing";
 import Faq from "@/components/Faq";
-import { FEATURES, HIGHLIGHTS, STEPS, SITE } from "@/lib/site";
+import { FEATURES, HIGHLIGHTS, STEPS, SITE, SECURITY } from "@/lib/site";
 
 export default function Home() {
   return (
@@ -122,8 +122,39 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Segurança */}
+      <section className="section bg-nuvem">
+        <div className="container-x">
+          <Reveal className="mx-auto max-w-2xl text-center">
+            <span className="eyebrow">Segurança</span>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-ink md:text-4xl">
+              Seu financeiro protegido
+            </h2>
+            <p className="mt-4 text-lg text-muted">
+              Controle de acesso, histórico e conexão segura — do jeito que dado financeiro exige.
+            </p>
+          </Reveal>
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {SECURITY.map((s, i) => {
+              const Icon = s.icon;
+              return (
+                <Reveal key={s.title} delay={(i % 4) * 0.06}>
+                  <div className="card h-full">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
+                      <Icon size={22} />
+                    </div>
+                    <h3 className="mt-4 text-base font-semibold text-ink">{s.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted">{s.desc}</p>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* Preços */}
-      <section id="precos" className="section anchor bg-nuvem">
+      <section id="precos" className="section anchor">
         <div className="container-x">
           <Reveal className="mx-auto max-w-2xl text-center">
             <span className="eyebrow">Planos</span>
@@ -182,12 +213,13 @@ export default function Home() {
               </p>
               <div className="mt-8 flex flex-wrap justify-center gap-3">
                 <a href={SITE.signupUrl} className="btn btn-white btn-lg">
-                  Começar agora <ArrowRight size={18} />
+                  Começar grátis <ArrowRight size={18} />
                 </a>
                 <a href="#precos" className="btn btn-lg border border-white/20 text-white hover:bg-white/10">
                   Ver planos
                 </a>
               </div>
+              <p className="mt-4 text-sm text-white/70">{SITE.riskReversal}</p>
             </Reveal>
           </div>
         </section>

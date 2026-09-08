@@ -5,18 +5,45 @@ import { SITE } from "@/lib/site";
 
 export default function ContactForm() {
   const [form, setForm] = useState({ nome: "", email: "", empresa: "", mensagem: "" });
+  const [status, setStatus] = useState("idle"); // idle | sending | success | error
 
   function update(e) {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    const subject = encodeURIComponent(`Contato pelo site — ${form.nome || "sem nome"}`);
-    const body = encodeURIComponent(
-      `Nome: ${form.nome}\nEmail: ${form.email}\nEmpresa: ${form.empresa}\n\n${form.mensagem}`
+    // Sem Formspree configurado → abre o e-mail (fallback)
+    if (!SITE.formspree) {
+      const subject = encodeURIComponent(`Contato pelo site — ${form.nome || "sem nome"}`);
+      const body = encodeURIComponent(
+        `Nome: ${form.nome}\nEmail: ${form.email}\nEmpresa: ${form.empresa}\n\n${form.mensagem}`
+      );
+      window.location.href = `mailto:${SITE.email}?subject=${subject}&body=${body}`;
+      return;
+    }
+    setStatus("sending");
+    try {
+      const res = await fetch(`https://formspree.io/f/${SITE.formspree}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error();
+      setStatus("success");
+      setForm({ nome: "", email: "", empresa: "", mensagem: "" });
+    } catch {
+      setStatus("error");
+    }
+  }
+
+  if (status === "success") {
+    return (
+      <div className="rounded-xl border border-brand-200 bg-brand-50 p-6 text-center">
+        <p className="font-semibold text-ink">Mensagem enviada!</p>
+        <p className="mt-1 text-sm text-muted">Recebemos seu contato e retornamos em breve.</p>
+      </div>
     );
-    window.location.href = `mailto:${SITE.email}?subject=${subject}&body=${body}`;
   }
 
   const field =
@@ -42,7 +69,14 @@ export default function ContactForm() {
         <label htmlFor="mensagem" className="mb-1.5 block text-sm font-medium text-ink">Mensagem</label>
         <textarea id="mensagem" name="mensagem" value={form.mensagem} onChange={update} required rows={5} className={field} placeholder="Como podemos ajudar?" />
       </div>
-      <button type="submit" className="btn btn-primary btn-lg w-full">Enviar mensagem</button>
+      {status === "error" && (
+        <p className="text-sm text-negative">
+          Não foi possível enviar. Tente novamente ou escreva para {SITE.email}.
+        </p>
+      )}
+      <button type="submit" disabled={status === "sending"} className="btn btn-primary btn-lg w-full disabled:opacity-60">
+        {status === "sending" ? "Enviando..." : "Enviar mensagem"}
+      </button>
     </form>
   );
 }

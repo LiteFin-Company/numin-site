@@ -41,14 +41,14 @@ export default function Hero() {
           </p>
           <div className="hero-in mt-9 flex flex-wrap gap-3" style={{ animationDelay: "0.21s" }}>
             <a href={SITE.signupUrl} className="btn btn-white btn-lg">
-              Começar agora <ArrowRight size={18} />
+              Começar grátis <ArrowRight size={18} />
             </a>
             <a href="#precos" className="btn btn-lg border border-white/40 text-white hover:bg-white/10">
               Ver planos
             </a>
           </div>
           <p className="hero-in mt-4 text-[13px] text-white/80" style={{ animationDelay: "0.29s" }}>
-            Sem cartão de crédito para começar · Cancele quando quiser
+            {SITE.riskReversal}
           </p>
         </div>
 
