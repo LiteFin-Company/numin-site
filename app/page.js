@@ -73,7 +73,7 @@ export default function Home() {
             const reversed = idx % 2 === 1;
             return (
               <Reveal key={h.title}>
-                <div className="grid items-center gap-10 md:grid-cols-2">
+                <div className={`grid items-center gap-10 ${reversed ? "md:grid-cols-[1.15fr_0.85fr]" : "md:grid-cols-[0.85fr_1.15fr]"}`}>
                   <div className={reversed ? "md:order-2" : ""}>
                     <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
                       <Icon size={24} />
