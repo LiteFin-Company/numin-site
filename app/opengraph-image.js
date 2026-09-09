@@ -22,7 +22,7 @@ export default function Image() {
         <div style={{ fontSize: 32, letterSpacing: 4, textTransform: "uppercase", opacity: 0.85 }}>
           Controle financeiro
         </div>
-        <div style={{ fontSize: 150, fontWeight: 800, marginTop: 8, lineHeight: 1 }}>numin</div>
+        <div style={{ fontSize: 150, fontWeight: 800, marginTop: 8, lineHeight: 1 }}>Numin</div>
         <div style={{ fontSize: 52, marginTop: 28, maxWidth: 900 }}>
           Números que fazem sentido.
         </div>
