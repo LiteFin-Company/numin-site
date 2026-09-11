@@ -165,9 +165,9 @@ const SECTIONS = [
           sob o nº {COMPANY.cnpj}, com sede em {COMPANY.endereco}, {COMPANY.cidadeUf} (“Numin”, “nós”).
         </p>
         <p>
-          O encarregado pelo tratamento de dados pessoais (DPO) é <strong className="text-ink">{COMPANY.encarregado}</strong>.
-          Para qualquer assunto sobre privacidade e proteção de dados, escreva para{" "}
-          <Mail to={COMPANY.emailPrivacidade} />. Para os demais assuntos, use <Mail to={COMPANY.emailContato} />.
+          Para qualquer assunto sobre privacidade e proteção de dados — inclusive para exercer os seus direitos como
+          titular — escreva para o nosso canal de privacidade, <Mail to={COMPANY.emailPrivacidade} />. Para os demais
+          assuntos, use <Mail to={COMPANY.emailContato} />.
         </p>
         <p>
           Esta Política vale para o site institucional (numin.com.br), para o sistema (app.numin.com.br) e para a
@@ -609,9 +609,8 @@ const SECTIONS = [
           <p>
             {COMPANY.endereco}, {COMPANY.cidadeUf}
           </p>
-          <p className="mt-3">Encarregado (DPO): {COMPANY.encarregado}</p>
-          <p>
-            E-mail: <Mail to={COMPANY.emailPrivacidade} />
+          <p className="mt-3">
+            Canal de privacidade: <Mail to={COMPANY.emailPrivacidade} />
           </p>
         </div>
         <p>

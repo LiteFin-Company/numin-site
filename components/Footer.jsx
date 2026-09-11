@@ -56,7 +56,10 @@ export default function Footer() {
 
       <div className="border-t border-white/10">
         <div className="container-x flex flex-col items-center justify-between gap-3 py-6 text-xs text-white/70 sm:flex-row">
-          <p>© {year} Numin. Todos os direitos reservados.</p>
+          <div className="text-center sm:text-left">
+            <p>© {year} Numin. Todos os direitos reservados.</p>
+            {legalName && <p className="mt-1">{legalName}</p>}
+          </div>
           <nav aria-label="Documentos legais" className="flex gap-5">
             {LEGAL_PAGES.map((item) => (
               <a key={item.href} href={item.href} className="transition-colors hover:text-white">
