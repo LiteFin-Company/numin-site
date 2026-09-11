@@ -27,9 +27,9 @@ export default function Header() {
         <a href="#top" className="flex items-center" aria-label="Numin — início">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={solid ? "/numin-logo-cor.png?v=2" : "/numin-logo-branca.png?v=2"}
+            src={solid ? "/numin-horizontal-cor.svg" : "/numin-horizontal-branco.svg"}
             alt="Numin — Controle financeiro"
-            className="h-10 w-auto"
+            className="h-8 w-auto"
           />
         </a>
 

@@ -111,7 +111,7 @@ export default function Home() {
                     ) : (
                       <div className="flex aspect-[4/3] items-center justify-center rounded-2xl border border-slate-200 bg-nuvem shadow-sm">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src="/numin-simbolo.png" alt="" aria-hidden="true" className="h-24 w-auto opacity-90" />
+                        <img src="/numin-simbolo-cor.svg" alt="" aria-hidden="true" className="h-24 w-auto opacity-90" />
                       </div>
                     )}
                   </div>

@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="container-x grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/numin-logo-branca.png?v=2" alt="Numin" className="h-9 w-auto" />
+          <img src="/numin-horizontal-branco.svg" alt="Numin" className="h-7 w-auto" />
           <p className="mt-4 max-w-xs font-display text-base font-semibold text-white">
             {SITE.shortSignature}
           </p>
