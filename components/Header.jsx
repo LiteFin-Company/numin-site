@@ -1,12 +1,17 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { NAV, SITE } from "@/lib/site";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  // Só a home tem o hero azul atrás do header. Nas outras páginas o fundo é
+  // branco, então o header já nasce sólido.
+  const onHome = usePathname() === "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -15,7 +20,7 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const solid = scrolled || open;
+  const solid = !onHome || scrolled || open;
 
   return (
     <header
@@ -24,14 +29,14 @@ export default function Header() {
       }`}
     >
       <div className="container-x flex h-16 items-center justify-between">
-        <a href="#top" className="flex items-center" aria-label="Numin — início">
+        <Link href="/" className="flex items-center" aria-label="Numin — início">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={solid ? "/numin-horizontal-cor.svg" : "/numin-horizontal-branco.svg"}
             alt="Numin — Controle financeiro"
             className="h-8 w-auto"
           />
-        </a>
+        </Link>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Menu principal">
           {NAV.map((item) => (

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { Check, Sparkles } from "lucide-react";
 import { PLANS, SITE, FOUNDER_OFFER } from "@/lib/site";
 
@@ -21,10 +20,8 @@ export default function Pricing() {
           onClick={() => setAnnual((a) => !a)}
           className={`relative inline-flex h-7 w-12 shrink-0 items-center rounded-full px-1 transition-colors duration-200 ${annual ? "bg-brand-600" : "bg-slate-300"}`}
         >
-          <motion.span
-            className="block h-5 w-5 rounded-full bg-white shadow"
-            animate={{ x: annual ? 20 : 0 }}
-            transition={{ type: "spring", stiffness: 500, damping: 32 }}
+          <span
+            className={`block h-5 w-5 rounded-full bg-white shadow transition-transform duration-200 ${annual ? "translate-x-5" : "translate-x-0"}`}
           />
         </button>
         <span className={`flex items-center gap-2 text-sm font-medium ${annual ? "text-ink" : "text-muted"}`}>
@@ -58,7 +55,7 @@ export default function Pricing() {
                 </span>
               ) : p.highlight ? (
                 <span className="mb-3 inline-flex w-fit rounded-full bg-brand-600 px-3 py-1 text-xs font-semibold text-white">
-                  Mais popular
+                  Recomendado
                 </span>
               ) : null}
 
@@ -69,7 +66,7 @@ export default function Pricing() {
                   <div className="mt-3 flex items-baseline gap-2">
                     <span className="tabnum text-3xl font-extrabold text-ink">{FOUNDER_OFFER.price}</span>
                     <span className="text-sm text-muted">{FOUNDER_OFFER.period}</span>
-                    <span className="tabnum text-sm text-slate-400 line-through">{FOUNDER_OFFER.original}</span>
+                    <span className="tabnum text-sm text-muted line-through">{FOUNDER_OFFER.original}</span>
                   </div>
                   <p className="mt-1 text-xs font-medium text-brand-700">{FOUNDER_OFFER.note}</p>
                 </>
@@ -105,7 +102,7 @@ export default function Pricing() {
         })}
       </div>
 
-      <p className="mt-6 text-center text-sm text-slate-500">{SITE.riskReversal}</p>
+      <p className="mt-6 text-center text-sm text-muted">{SITE.riskReversal}</p>
     </>
   );
 }

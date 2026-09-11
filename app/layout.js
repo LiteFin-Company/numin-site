@@ -1,6 +1,7 @@
 import { Inter, Quicksand } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
+import { SITE } from "@/lib/site";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -13,8 +14,10 @@ const quicksand = Quicksand({
   weight: ["500", "600", "700"],
 });
 
+// Cada página declara a própria canônica (alternates.canonical); aqui fica só
+// o que vale para o site inteiro — por isso o openGraph não tem url.
 export const metadata = {
-  metadataBase: new URL("https://numin.com.br"),
+  metadataBase: new URL(SITE.url),
   title: {
     default: "Numin — Controle financeiro para sua empresa",
     template: "%s — Numin",
@@ -34,7 +37,6 @@ export const metadata = {
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    url: "https://numin.com.br",
     siteName: "Numin",
     title: "Numin — Controle financeiro para sua empresa",
     description:
@@ -46,6 +48,10 @@ export const metadata = {
     description:
       "Números que fazem sentido. Contas, cartão, conciliação, fluxo de caixa e relatórios.",
   },
+};
+
+export const viewport = {
+  themeColor: "#0079FD",
 };
 
 export default function RootLayout({ children }) {

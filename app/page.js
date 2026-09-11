@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Check, ArrowRight } from "lucide-react";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
@@ -5,11 +6,56 @@ import ContactForm from "@/components/ContactForm";
 import Reveal from "@/components/Reveal";
 import Pricing from "@/components/Pricing";
 import Faq from "@/components/Faq";
-import { FEATURES, HIGHLIGHTS, STEPS, SITE, SECURITY } from "@/lib/site";
+import { FEATURES, HIGHLIGHTS, STEPS, SITE, SECURITY, PLANS, FAQ } from "@/lib/site";
+
+export const metadata = {
+  alternates: { canonical: "/" },
+};
+
+// "R$ 1.234,56" -> "1234.56", o formato que o schema.org espera.
+const toPrice = (brl) => brl.replace(/[^\d,]/g, "").replace(",", ".");
+
+const JSON_LD = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${SITE.url}/#organizacao`,
+      name: SITE.name,
+      url: SITE.url,
+      logo: `${SITE.url}/apple-icon.png`,
+      email: SITE.email,
+    },
+    {
+      "@type": "SoftwareApplication",
+      name: SITE.name,
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Web",
+      url: SITE.url,
+      description:
+        "Controle financeiro para empresas: contas a pagar e a receber, cartão de crédito, conciliação bancária, fluxo de caixa e DRE em um só lugar.",
+      publisher: { "@id": `${SITE.url}/#organizacao` },
+      offers: PLANS.map((p) => ({ "@type": "Offer", name: p.name, price: toPrice(p.price), priceCurrency: "BRL" })),
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: FAQ.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+  ],
+};
 
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD).replace(/</g, "\\u003c") }}
+      />
+
       <Hero />
 
       {/* Funcionalidades */}
@@ -26,15 +72,15 @@ export default function Home() {
           </Reveal>
 
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {FEATURES.map((f, i) => {
+            {FEATURES.map((f) => {
               const Icon = f.icon;
               return (
-                <Reveal key={f.title} delay={(i % 3) * 0.07}>
-                  <div className="card card-hover h-full">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
-                      <Icon size={22} />
+                <Reveal key={f.title} className="h-full">
+                  <div className="card card-hover h-full p-7">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500 text-white shadow-[0_8px_24px_rgba(0,121,253,0.26)]">
+                      <Icon size={24} />
                     </div>
-                    <h3 className="mt-4 text-lg font-semibold text-ink">{f.title}</h3>
+                    <h3 className="mt-5 text-lg font-bold text-ink">{f.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-muted">{f.desc}</p>
                   </div>
                 </Reveal>
@@ -44,7 +90,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Como funciona */}
+      {/* Como funciona — três passos ligados por uma linha */}
       <section className="section bg-nuvem">
         <div className="container-x">
           <Reveal className="mx-auto max-w-2xl text-center">
@@ -53,14 +99,33 @@ export default function Home() {
               Seu financeiro organizado em poucos passos
             </h2>
           </Reveal>
-          <div className="mt-14 grid gap-8 md:grid-cols-3">
-            {STEPS.map((s, i) => (
-              <Reveal key={s.n} delay={i * 0.1}>
-                <span className="font-display text-4xl font-bold text-brand-200">{s.n}</span>
-                <h3 className="mt-2 text-xl font-semibold text-ink">{s.title}</h3>
-                <p className="mt-2 text-muted">{s.desc}</p>
-              </Reveal>
-            ))}
+          <div className="relative mt-14">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute left-[16.66%] right-[16.66%] top-8 hidden h-0.5 bg-linear-to-r from-brand-200 via-brand-400 to-brand-200 md:block"
+            />
+            <ol className="relative grid gap-10 md:grid-cols-3 md:gap-8">
+              {STEPS.map((s) => {
+                const Icon = s.icon;
+                return (
+                  <li key={s.n}>
+                    <Reveal className="text-center">
+                      <div className="relative mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-white text-brand-600 shadow-[0_8px_24px_-8px_rgba(0,121,253,0.35)] ring-1 ring-brand-100">
+                        <Icon size={28} />
+                        <span className="absolute -right-2 -top-2 flex h-7 w-7 items-center justify-center rounded-full bg-brand-600 text-xs font-bold text-white">
+                          {s.n}
+                        </span>
+                      </div>
+                      <h3 className="mt-5 text-xl font-semibold text-ink">{s.title}</h3>
+                      <p className="mx-auto mt-2 max-w-xs text-muted">{s.desc}</p>
+                      <span className="mt-4 inline-flex rounded-full bg-white px-3 py-1 text-xs font-semibold text-brand-700 ring-1 ring-brand-100">
+                        {s.tag}
+                      </span>
+                    </Reveal>
+                  </li>
+                );
+              })}
+            </ol>
           </div>
         </div>
       </section>
@@ -93,27 +158,26 @@ export default function Home() {
                     </ul>
                   </div>
                   <div className={reversed ? "md:order-1" : ""}>
-                    {h.media ? (
-                      <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_30px_60px_-30px_rgba(19,48,89,0.35)]">
-                        <div className="flex items-center gap-1.5 border-b border-slate-100 bg-slate-50 px-3 py-2.5">
-                          <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
-                          <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
-                          <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
-                          <div className="ml-2 flex-1">
-                            <div className="mx-auto w-fit rounded border border-slate-200 bg-white px-2.5 py-0.5 text-[10px] text-slate-400">
-                              app.numin.com.br
-                            </div>
+                    <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_30px_60px_-30px_rgba(14,51,106,0.35)]">
+                      <div className="flex items-center gap-1.5 border-b border-slate-100 bg-slate-50 px-3 py-2.5">
+                        <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
+                        <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
+                        <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
+                        <div className="ml-2 flex-1">
+                          <div className="mx-auto w-fit rounded border border-slate-200 bg-white px-2.5 py-0.5 text-[10px] text-slate-500">
+                            app.numin.com.br
                           </div>
                         </div>
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={h.media} alt={h.title} className="block w-full" />
                       </div>
-                    ) : (
-                      <div className="flex aspect-[4/3] items-center justify-center rounded-2xl border border-slate-200 bg-nuvem shadow-sm">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src="/numin-simbolo-cor.svg" alt="" aria-hidden="true" className="h-24 w-auto opacity-90" />
-                      </div>
-                    )}
+                      <Image
+                        src={h.media}
+                        alt={h.alt}
+                        width={h.mediaSize[0]}
+                        height={h.mediaSize[1]}
+                        sizes="(min-width: 1280px) 680px, (min-width: 768px) 55vw, 100vw"
+                        className="block h-auto w-full"
+                      />
+                    </div>
                   </div>
                 </div>
               </Reveal>
@@ -134,17 +198,22 @@ export default function Home() {
               Controle de acesso, histórico e conexão segura — do jeito que dado financeiro exige.
             </p>
           </Reveal>
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {SECURITY.map((s, i) => {
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {SECURITY.map((s) => {
               const Icon = s.icon;
               return (
-                <Reveal key={s.title} delay={(i % 4) * 0.06}>
+                <Reveal key={s.title} className="h-full">
                   <div className="card h-full">
                     <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
                       <Icon size={22} />
                     </div>
                     <h3 className="mt-4 text-base font-semibold text-ink">{s.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-muted">{s.desc}</p>
+                    {s.href && (
+                      <a href={s.href} className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-brand-600 hover:text-brand-700">
+                        Ler a política <ArrowRight size={14} />
+                      </a>
+                    )}
                   </div>
                 </Reveal>
               );
@@ -219,7 +288,7 @@ export default function Home() {
                   Ver planos
                 </a>
               </div>
-              <p className="mt-4 text-sm text-white/70">{SITE.riskReversal}</p>
+              <p className="mt-4 text-sm text-white/80">{SITE.riskReversal}</p>
             </Reveal>
           </div>
         </section>

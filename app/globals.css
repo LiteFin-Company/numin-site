@@ -1,29 +1,32 @@
 @import "tailwindcss";
 
 /* ============================================================
-   Numin — Site · Brand guide v6
-   Marinho #133059 · Azul Numin #1D6BEE · Azul Névoa #A3CBFD
-   Ardósia #32476B · Nuvem #F5F7FC
-   Títulos: Quicksand · Texto: Inter
+   Numin — Site · brand kit oficial v1.0 (numin-brandkit/05-tokens)
+   Azul da marca #0079FD · Azul 600 #0062D6 · Marinho #0E336A
+   Névoa #99C9FD · Nuvem #F5F8FD
+   Títulos: Quicksand · Texto: Inter (cv05)
    ============================================================ */
 @theme {
-  --color-brand-50: #eff5ff;
-  --color-brand-100: #dbe8ff;
-  --color-brand-200: #a3cbfd; /* Azul Névoa (previsto) */
-  --color-brand-300: #7fb4fb;
-  --color-brand-400: #60a7fd; /* sobreposição das folhas */
-  --color-brand-500: #3f86f2;
-  --color-brand-600: #1d6bee; /* Azul Numin (ações, realizado) */
-  --color-brand-700: #1557c9;
-  --color-brand-800: #0f429b;
+  /* Escala azul do kit. brand-500 é o azul da marca; como texto ele fica
+     perto de 4:1, então botões, links e eyebrows usam brand-600 ou mais escuro. */
+  --color-brand-50: #e8f3ff;
+  --color-brand-100: #cfe6ff;
+  --color-brand-200: #a3d0fe;
+  --color-brand-300: #99c9fd; /* Névoa */
+  --color-brand-400: #2f98fe;
+  --color-brand-500: #0079fd; /* Azul da marca */
+  --color-brand-600: #0062d6;
+  --color-brand-700: #004dab;
+  --color-brand-800: #013f8a;
+  --color-brand-900: #0e336a;
 
-  --color-ink: #133059;      /* Marinho Numin — títulos / fundos escuros */
-  --color-ink-700: #32476b;  /* Ardósia — apoio */
-  --color-muted: #51627f;
+  --color-ink: #0e336a;      /* Marinho — títulos */
+  --color-ink-700: #2d4b84;  /* texto de apoio */
+  --color-muted: #4363a0;    /* texto secundário */
 
-  --color-nuvem: #f5f7fc;
-  --color-positive: #0f9d6e;
-  --color-warning: #e8a23d;
+  --color-nuvem: #f5f8fd;
+  --color-positive: #0aa06e;
+  --color-warning: #f5a524;
   --color-negative: #e5484d;
 
   --font-sans: var(--font-inter);
@@ -43,74 +46,81 @@ html { scroll-behavior: smooth; }
   body {
     background: var(--background);
     color: var(--color-ink-700);
-    font-family: var(--font-inter), system-ui, sans-serif;
+    font-family: var(--font-inter), system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+    /* cv05 separa o l minúsculo do I e do 1 — importa em tela de números */
+    font-feature-settings: "cv05" 1;
   }
   h1, h2, h3, h4, h5 {
-    font-family: var(--font-quicksand), var(--font-inter), system-ui, sans-serif;
+    font-family: var(--font-quicksand), "Baloo 2", system-ui, sans-serif;
     color: var(--color-ink);
     letter-spacing: -0.01em;
   }
 }
 
-.anchor { scroll-margin-top: 5rem; }
-.tabnum { font-variant-numeric: tabular-nums; }
+/* Reusable pieces ------------------------------------------------
+   Em @layer components para que os utilitários do Tailwind possam
+   sobrescrevê-los (ex.: "card p-7", "container-x max-w-3xl"). CSS fora de
+   camada ganharia de qualquer utilitário. */
+@layer components {
+  .anchor { scroll-margin-top: 5rem; }
+  .tabnum { font-variant-numeric: tabular-nums; }
 
-/* Reusable pieces ------------------------------------------------ */
-.container-x {
-  width: 100%;
-  max-width: 80rem;
-  margin-inline: auto;
-  padding-inline: 1.5rem;
+  .container-x {
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+  @media (min-width: 1024px) { .container-x { padding-inline: 2.5rem; } }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.7rem 1.25rem;
+    transition: all 0.15s ease;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .btn-primary { background: var(--color-brand-600); color: #fff; box-shadow: 0 1px 2px rgba(14,51,106,0.10); }
+  .btn-primary:hover { background: var(--color-brand-700); box-shadow: 0 8px 24px rgba(0,121,253,0.26); }
+  .btn-ghost { background: #fff; color: var(--color-ink); border: 1px solid #d9e3f1; }
+  .btn-ghost:hover { border-color: var(--color-brand-400); color: var(--color-brand-700); }
+  .btn-white { background: #fff; color: var(--color-brand-700); }
+  .btn-white:hover { background: var(--color-brand-50); }
+  .btn-lg { padding: 0.9rem 1.6rem; font-size: 1rem; }
+
+  .eyebrow {
+    color: var(--color-brand-600);
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid #e3eaf5;
+    border-radius: 1.125rem;
+    padding: 1.5rem;
+    transition: box-shadow 0.18s ease, transform 0.18s ease, border-color 0.18s ease;
+  }
+  .card-hover:hover {
+    box-shadow: 0 12px 32px -12px rgba(0,121,253,0.25);
+    border-color: var(--color-brand-200);
+    transform: translateY(-2px);
+  }
+
+  .section { padding-block: 5rem; }
+  @media (min-width: 768px) { .section { padding-block: 6.5rem; } }
+
+  /* Fundo azul compartilhado (hero + rodapé) — azuis do kit */
+  .bg-brand-hero { background: linear-gradient(160deg, #0a80fd 0%, #006ae8 45%, #0052b8 100%); }
 }
-@media (min-width: 1024px) { .container-x { padding-inline: 2.5rem; } }
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  border-radius: 0.625rem;
-  font-weight: 600;
-  font-size: 0.95rem;
-  padding: 0.7rem 1.25rem;
-  transition: all 0.15s ease;
-  line-height: 1;
-  cursor: pointer;
-}
-.btn-primary { background: var(--color-brand-600); color: #fff; box-shadow: 0 1px 2px rgba(19,48,89,0.10); }
-.btn-primary:hover { background: var(--color-brand-700); }
-.btn-ghost { background: #fff; color: var(--color-ink); border: 1px solid #dbe2ee; }
-.btn-ghost:hover { border-color: var(--color-brand-400); color: var(--color-brand-700); }
-.btn-white { background: #fff; color: var(--color-brand-700); }
-.btn-white:hover { background: var(--color-brand-50); }
-.btn-lg { padding: 0.9rem 1.6rem; font-size: 1rem; }
-
-.eyebrow {
-  color: var(--color-brand-600);
-  font-weight: 700;
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.card {
-  background: #fff;
-  border: 1px solid #e6ebf3;
-  border-radius: 1rem;
-  padding: 1.5rem;
-  transition: box-shadow 0.18s ease, transform 0.18s ease, border-color 0.18s ease;
-}
-.card-hover:hover {
-  box-shadow: 0 12px 32px -12px rgba(29,107,238,0.22);
-  border-color: var(--color-brand-200);
-  transform: translateY(-2px);
-}
-
-.section { padding-block: 5rem; }
-@media (min-width: 768px) { .section { padding-block: 6.5rem; } }
-
-/* Fundo azul compartilhado (hero + rodapé) */
-.bg-brand-hero { background: linear-gradient(160deg, #2b7cf3 0%, #1d6bee 45%, #1552bd 100%); }
 
 /* Floating hero cards */
 @keyframes floaty {
@@ -119,21 +129,44 @@ html { scroll-behavior: smooth; }
 }
 .floaty { animation: floaty 5.5s ease-in-out infinite; }
 
-/* Hero entrance */
-@keyframes heroIn {
-  from { opacity: 0; transform: translateY(16px); }
+/* Entrada ao rolar — só CSS (scroll-driven animations), sem JavaScript.
+   Onde o navegador não suporta, ou com movimento reduzido, o conteúdo
+   simplesmente aparece: nada fica escondido esperando script. */
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: none; }
 }
-.hero-in { opacity: 0; animation: heroIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 55%;
+    }
+  }
+}
+
+/* FAQ em <details>: abre com altura animada onde o navegador suporta */
+@supports (interpolate-size: allow-keywords) {
+  @media (prefers-reduced-motion: no-preference) {
+    .faq-item { interpolate-size: allow-keywords; }
+    .faq-item::details-content {
+      block-size: 0;
+      overflow: clip;
+      transition: block-size 0.3s ease, content-visibility 0.3s allow-discrete;
+    }
+    .faq-item[open]::details-content { block-size: auto; }
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
   .floaty { animation: none; }
-  .hero-in { opacity: 1; animation: none; }
 }
 
 /* Foco visível (acessibilidade) */
 a:focus-visible,
 button:focus-visible,
+summary:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 [role="switch"]:focus-visible {
