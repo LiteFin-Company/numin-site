@@ -104,8 +104,6 @@ export default function Pricing() {
           );
         })}
       </div>
-
-      <p className="mt-6 text-center text-sm text-muted">{SITE.riskReversal}</p>
     </>
   );
 }
