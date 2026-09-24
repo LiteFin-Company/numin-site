@@ -249,10 +249,10 @@ const SECTIONS = [
             <B>Essencial:</B> até 2 membros.
           </li>
           <li>
-            <B>Time:</B> até 5 membros, com API pública.
+            <B>Profissional:</B> até 5 membros, com API pública.
           </li>
           <li>
-            <B>Escala:</B> até 15 membros, com API pública.
+            <B>Avançado:</B> até 15 membros, com API pública.
           </li>
         </List>
         <p>
@@ -395,7 +395,7 @@ const SECTIONS = [
     title: "API pública",
     body: (
       <List>
-        <li>A API pública está disponível nos planos Time e Escala.</li>
+        <li>A API pública está disponível nos planos Profissional e Avançado.</li>
         <li>
           O acesso é feito por chaves de API criadas pelos administradores, cada uma com um nível de permissão e, se
           desejado, uma data de validade. A chave completa é exibida uma única vez, na criação.
