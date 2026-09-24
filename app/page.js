@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
 import Pricing from "@/components/Pricing";
 import Faq from "@/components/Faq";
-import { FEATURES, HIGHLIGHTS, STEPS, SITE, SECURITY, PLANS, FAQ } from "@/lib/site";
+import { FEATURES, HIGHLIGHTS, SITE, SECURITY, PLANS, FAQ } from "@/lib/site";
 
 export const metadata = {
   alternates: { canonical: "/" },
@@ -85,46 +85,6 @@ export default function Home() {
                 </Reveal>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* Como funciona — três passos ligados por uma linha */}
-      <section className="section bg-nuvem">
-        <div className="container-x">
-          <Reveal className="mx-auto max-w-2xl text-center">
-            <span className="eyebrow">Como funciona</span>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-ink md:text-4xl">
-              Seu financeiro organizado em poucos passos
-            </h2>
-          </Reveal>
-          <div className="relative mt-14">
-            <div
-              aria-hidden
-              className="pointer-events-none absolute left-[16.66%] right-[16.66%] top-8 hidden h-0.5 bg-linear-to-r from-brand-200 via-brand-400 to-brand-200 md:block"
-            />
-            <ol className="relative grid gap-10 md:grid-cols-3 md:gap-8">
-              {STEPS.map((s) => {
-                const Icon = s.icon;
-                return (
-                  <li key={s.n}>
-                    <Reveal className="text-center">
-                      <div className="relative mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-white text-brand-600 shadow-[0_8px_24px_-8px_rgba(0,121,253,0.35)] ring-1 ring-brand-100">
-                        <Icon size={28} />
-                        <span className="absolute -right-2 -top-2 flex h-7 w-7 items-center justify-center rounded-full bg-brand-600 text-xs font-bold text-white">
-                          {s.n}
-                        </span>
-                      </div>
-                      <h3 className="mt-5 text-xl font-semibold text-ink">{s.title}</h3>
-                      <p className="mx-auto mt-2 max-w-xs text-muted">{s.desc}</p>
-                      <span className="mt-4 inline-flex rounded-full bg-white px-3 py-1 text-xs font-semibold text-brand-700 ring-1 ring-brand-100">
-                        {s.tag}
-                      </span>
-                    </Reveal>
-                  </li>
-                );
-              })}
-            </ol>
           </div>
         </div>
       </section>
