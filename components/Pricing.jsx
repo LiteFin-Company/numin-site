@@ -30,12 +30,13 @@ export default function Pricing() {
         </span>
       </div>
 
-      {/* Oferta de fundador */}
+      {/* Oferta Parceiros Numin */}
       <div className="mx-auto mt-10 flex max-w-3xl items-center justify-center gap-2 rounded-xl border border-brand-200 bg-brand-50 px-4 py-3 text-center text-sm text-ink">
         <Sparkles size={16} className="shrink-0 text-brand-600" />
         <span>
-          <b>Oferta de fundador:</b> as primeiras <b>{FOUNDER_OFFER.slots} empresas</b> assinam o{" "}
-          <b>{FOUNDER_OFFER.plan}</b> por <b>{FOUNDER_OFFER.price}{FOUNDER_OFFER.period}</b>, para sempre.
+          <b>{FOUNDER_OFFER.name}:</b> as {FOUNDER_OFFER.slots} primeiras empresas usam o{" "}
+          <b>{FOUNDER_OFFER.plan}</b> <b>grátis por {FOUNDER_OFFER.freeMonths} meses</b> e depois pagam{" "}
+          <b>{FOUNDER_OFFER.price}{FOUNDER_OFFER.period}</b>, para sempre.
         </span>
       </div>
 
@@ -51,7 +52,7 @@ export default function Pricing() {
             >
               {isFounder ? (
                 <span className="mb-3 inline-flex w-fit items-center gap-1 rounded-full bg-brand-600 px-3 py-1 text-xs font-semibold text-white">
-                  <Sparkles size={12} /> Fundador · {FOUNDER_OFFER.slots} vagas
+                  <Sparkles size={12} /> {FOUNDER_OFFER.name} · {FOUNDER_OFFER.slots} vagas
                 </span>
               ) : p.highlight ? (
                 <span className="mb-3 inline-flex w-fit rounded-full bg-brand-600 px-3 py-1 text-xs font-semibold text-white">
@@ -64,11 +65,13 @@ export default function Pricing() {
               {isFounder ? (
                 <>
                   <div className="mt-3 flex items-baseline gap-2">
-                    <span className="tabnum text-3xl font-extrabold text-ink">{FOUNDER_OFFER.price}</span>
-                    <span className="text-sm text-muted">{FOUNDER_OFFER.period}</span>
-                    <span className="tabnum text-sm text-muted line-through">{FOUNDER_OFFER.original}</span>
+                    <span className="text-3xl font-extrabold text-ink">Grátis</span>
+                    <span className="text-sm text-muted">por {FOUNDER_OFFER.freeMonths} meses</span>
                   </div>
-                  <p className="mt-1 text-xs font-medium text-brand-700">{FOUNDER_OFFER.note}</p>
+                  <p className="mt-1 text-xs font-medium text-brand-700">
+                    depois <span className="tabnum">{FOUNDER_OFFER.price}{FOUNDER_OFFER.period}</span> para sempre{" "}
+                    <span className="tabnum font-normal text-muted line-through">{FOUNDER_OFFER.original}</span>
+                  </p>
                 </>
               ) : (
                 <>

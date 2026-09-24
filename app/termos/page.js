@@ -286,10 +286,11 @@ const SECTIONS = [
           dias antes da vigência. Se não concordar com o novo preço, você pode cancelar antes que ele passe a valer,
           sem multa.
         </p>
-        <H3>Oferta de fundador</H3>
+        <H3>Oferta Parceiros Numin</H3>
         <List>
           <li>
-            As 30 primeiras empresas que contratarem o plano Essencial pela oferta de fundador pagam{" "}
+            As 10 primeiras empresas que contratarem o plano Essencial pela oferta Parceiros Numin usam o plano{" "}
+            <B>sem custo por 6 meses</B>, contados da contratação. Depois desse período, passam a pagar{" "}
             <B>R$ 49,90 por mês</B>.
           </li>
           <li>
