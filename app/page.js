@@ -264,7 +264,6 @@ export default function Home() {
                   Ver planos
                 </a>
               </div>
-              <p className="mt-4 text-sm text-white/80">{SITE.riskReversal}</p>
             </Reveal>
           </div>
         </section>

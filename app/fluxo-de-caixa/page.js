@@ -177,7 +177,6 @@ export default function FluxoDeCaixaPage() {
           <a href={SITE.signupUrl} className="btn btn-primary mt-5">
             Começar grátis <ArrowRight size={16} />
           </a>
-          <p className="mt-3 text-sm text-muted">{SITE.riskReversal}</p>
         </div>
 
         <h2 className={h2}>Erros comuns no fluxo de caixa</h2>
@@ -287,7 +286,6 @@ export default function FluxoDeCaixaPage() {
               Começar grátis <ArrowRight size={18} />
             </a>
           </div>
-          <p className="mt-4 text-sm text-muted">{SITE.riskReversal}</p>
         </section>
       </article>
 

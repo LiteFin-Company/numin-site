@@ -52,7 +52,6 @@ export default function Hero() {
               Ver planos
             </a>
           </div>
-          <p className="mt-4 text-[13px] text-white/85">{SITE.riskReversal}</p>
         </div>
 
         {/* Right — pessoa + vantagens flutuantes (glass); alinhada à base do hero */}
