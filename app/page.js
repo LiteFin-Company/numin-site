@@ -1,4 +1,4 @@
-import Image from "next/image";
+import FeatureVideo from "@/components/FeatureVideo";
 import { Check, ArrowRight } from "lucide-react";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
@@ -128,13 +128,12 @@ export default function Home() {
                           </div>
                         </div>
                       </div>
-                      <Image
-                        src={h.media}
-                        alt={h.alt}
-                        width={h.mediaSize[0]}
-                        height={h.mediaSize[1]}
-                        sizes="(min-width: 1280px) 680px, (min-width: 768px) 55vw, 100vw"
-                        className="block h-auto w-full"
+                      <FeatureVideo
+                        src={h.video}
+                        poster={`${h.video}.webp`}
+                        width={1440}
+                        height={762}
+                        label={h.alt}
                       />
                     </div>
                   </div>
