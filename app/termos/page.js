@@ -252,7 +252,7 @@ const SECTIONS = [
             <B>Profissional:</B> até 5 membros, com API pública.
           </li>
           <li>
-            <B>Avançado:</B> até 15 membros, com API pública.
+            <B>Avançado:</B> até 10 membros, com API pública.
           </li>
         </List>
         <p>
