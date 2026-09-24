@@ -2,7 +2,6 @@ import Image from "next/image";
 import { Check, ArrowRight } from "lucide-react";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
-import ContactForm from "@/components/ContactForm";
 import Reveal from "@/components/Reveal";
 import Pricing from "@/components/Pricing";
 import Faq from "@/components/Faq";
@@ -241,29 +240,6 @@ export default function Home() {
             <h3 className="text-center text-2xl font-bold tracking-tight text-ink">Perguntas frequentes</h3>
             <div className="mt-8">
               <Faq />
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Contato */}
-      <section id="contato" className="section anchor bg-nuvem">
-        <div className="container-x">
-          <Reveal className="mx-auto max-w-2xl text-center">
-            <span className="eyebrow">Contato</span>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-ink md:text-4xl">Vamos conversar</h2>
-            <p className="mt-4 text-lg text-muted">
-              Tire suas dúvidas sobre planos, funcionalidades e integrações.
-            </p>
-          </Reveal>
-
-          <Reveal className="mx-auto mt-14 max-w-xl">
-            <div className="card bg-white">
-              <h3 className="text-xl font-bold text-ink">Envie uma mensagem</h3>
-              <p className="mt-1 text-sm text-muted">Preencha e abriremos seu email com tudo pronto para enviar.</p>
-              <div className="mt-6">
-                <ContactForm />
-              </div>
             </div>
           </Reveal>
         </div>

@@ -260,9 +260,8 @@ const SECTIONS = [
         </p>
         <H3>Contato e suporte</H3>
         <p>
-          O formulário de contato do site não envia nem armazena nada: ele só abre o seu programa de e-mail com a
-          mensagem preenchida. Se você enviar essa mensagem, ou escrever diretamente para nós, trataremos o seu nome,
-          e-mail, empresa e o conteúdo da mensagem para responder.
+          Se você escrever para nós, trataremos o seu nome, e-mail, empresa e o conteúdo da mensagem para
+          responder.
         </p>
       </>
     ),
