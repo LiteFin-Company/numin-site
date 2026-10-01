@@ -290,7 +290,7 @@ const SECTIONS = [
         <List>
           <li>
             As 10 primeiras empresas que contratarem o plano Essencial pela oferta Parceiros Numin usam o plano{" "}
-            <B>sem custo por 6 meses</B>, contados da contratação. Depois desse período, passam a pagar{" "}
+            <B>sem custo até 31 de dezembro de 2026</B>. A partir de 1º de janeiro de 2027, passam a pagar{" "}
             <B>R$ 49,90 por mês</B>.
           </li>
           <li>

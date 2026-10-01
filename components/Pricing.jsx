@@ -35,7 +35,7 @@ export default function Pricing() {
         <Sparkles size={16} className="shrink-0 text-brand-600" />
         <span>
           <b>{FOUNDER_OFFER.name}:</b> as {FOUNDER_OFFER.slots} primeiras empresas usam o{" "}
-          <b>{FOUNDER_OFFER.plan}</b> <b>grátis por {FOUNDER_OFFER.freeMonths} meses</b> e depois pagam{" "}
+          <b>{FOUNDER_OFFER.plan}</b> <b>grátis até {FOUNDER_OFFER.freeUntil}</b> e depois pagam{" "}
           <b>{FOUNDER_OFFER.price}{FOUNDER_OFFER.period}</b>, para sempre.
         </span>
       </div>
@@ -66,10 +66,10 @@ export default function Pricing() {
                 <>
                   <div className="mt-3 flex items-baseline gap-2">
                     <span className="text-3xl font-extrabold text-ink">Grátis</span>
-                    <span className="text-sm text-muted">por {FOUNDER_OFFER.freeMonths} meses</span>
+                    <span className="text-sm text-muted">até {FOUNDER_OFFER.freeUntil}</span>
                   </div>
                   <p className="mt-1 text-xs font-medium text-brand-700">
-                    depois <span className="tabnum">{FOUNDER_OFFER.price}{FOUNDER_OFFER.period}</span> para sempre{" "}
+                    a partir de {FOUNDER_OFFER.paidFrom}, <span className="tabnum">{FOUNDER_OFFER.price}{FOUNDER_OFFER.period}</span> para sempre{" "}
                     <span className="tabnum font-normal text-muted line-through">{FOUNDER_OFFER.original}</span>
                   </p>
                 </>
