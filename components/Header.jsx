@@ -38,7 +38,7 @@ export default function Header() {
           />
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Menu principal">
+        <nav className="hidden items-center gap-6 lg:flex xl:gap-8" aria-label="Menu principal">
           {NAV.map((item) => (
             <a
               key={item.href}
@@ -52,7 +52,7 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="hidden items-center gap-3 lg:flex">
           <a
             href={SITE.appUrl}
             className={`text-sm font-semibold transition-colors ${
@@ -67,7 +67,7 @@ export default function Header() {
         </div>
 
         <button
-          className={`inline-flex items-center justify-center rounded-lg p-2 md:hidden ${
+          className={`inline-flex items-center justify-center rounded-lg p-2 lg:hidden ${
             solid ? "text-slate-700" : "text-white"
           }`}
           onClick={() => setOpen((v) => !v)}
@@ -79,7 +79,7 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="border-t border-slate-100 bg-white md:hidden">
+        <div className="border-t border-slate-100 bg-white lg:hidden">
           <nav className="container-x flex flex-col gap-1 py-4" aria-label="Menu mobile">
             {NAV.map((item) => (
               <a

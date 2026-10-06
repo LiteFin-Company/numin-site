@@ -59,7 +59,7 @@ export default function Home() {
       <Hero />
 
       {/* Funcionalidades */}
-      <section id="funcionalidades" className="section anchor">
+      <section id="funcionalidades" className="section anchor bg-nuvem">
         <div className="container-x">
           <Reveal className="mx-auto max-w-2xl text-center">
             <span className="eyebrow">Funcionalidades</span>
