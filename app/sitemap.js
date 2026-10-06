@@ -10,6 +10,7 @@ export default function sitemap() {
     ...getAllPosts()
       .filter((p) => p.slug)
       .map((p) => ({ url: `${SITE.url}${p.href}`, lastModified: new Date(p.date), changeFrequency: "monthly", priority: 0.7 })),
+    { url: `${SITE.url}/seguranca`, lastModified, changeFrequency: "monthly", priority: 0.6 },
     ...LEGAL_PAGES.map((p) => ({ url: `${SITE.url}${p.href}`, lastModified, changeFrequency: "yearly", priority: 0.3 })),
   ];
 }

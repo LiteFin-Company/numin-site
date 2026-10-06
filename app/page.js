@@ -226,6 +226,11 @@ export default function Home() {
               );
             })}
           </div>
+          <div className="mt-10 text-center">
+            <a href="/seguranca" className="btn btn-ghost">
+              Ver tudo sobre segurança <ArrowRight size={16} />
+            </a>
+          </div>
         </div>
       </section>
 
