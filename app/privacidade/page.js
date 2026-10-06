@@ -543,14 +543,26 @@ const SECTIONS = [
         </p>
         <H3>Sistema</H3>
         <p>
-          O sistema não usa cookies. Para funcionar, ele guarda no armazenamento local do navegador (localStorage e
-          sessionStorage) apenas o necessário:
+          O sistema usa um único cookie, estritamente necessário para manter você conectado. Ele não é usado para
+          análise de audiência, publicidade ou rastreamento, e por isso não depende de consentimento:
         </p>
         <List>
           <li>
-            <strong className="text-ink">Sessão:</strong> o código de acesso (token) e dados básicos para exibir a
-            tela (seu nome, e-mail, organização atual, seu papel e a lista das suas organizações). Isso mantém você
-            conectado ao recarregar a página e é apagado quando você clica em “Sair”. A sessão expira sozinha em 7 dias.
+            <strong className="text-ink">Cookie de sessão (numin_session):</strong> guarda o código de acesso (token)
+            que identifica a sua sessão. É marcado como HttpOnly (scripts da página não conseguem lê-lo), Secure (só
+            trafega por conexão criptografada) e SameSite=Lax, e só é enviado à API do Numin. Vale por 12 horas sem uso
+            e é renovado enquanto você usa o sistema, até o limite de 7 dias desde o login. É apagado quando você clica
+            em “Sair”, e todas as sessões são encerradas quando a senha é trocada ou redefinida.
+          </li>
+        </List>
+        <p>
+          Além do cookie, o sistema guarda no armazenamento local do navegador (localStorage e sessionStorage) apenas o
+          necessário para a tela funcionar, sem o código de acesso:
+        </p>
+        <List>
+          <li>
+            <strong className="text-ink">Dados de exibição:</strong> seu nome, e-mail, organização atual, seu papel e a
+            lista das suas organizações. São apagados quando você clica em “Sair”.
           </li>
           <li>
             <strong className="text-ink">Preferência de exibição:</strong> se você escolheu ocultar os valores no
@@ -562,7 +574,7 @@ const SECTIONS = [
           </li>
         </List>
         <p>
-          Esses dados ficam só no seu navegador e são estritamente necessários para o serviço funcionar. Ao abrir o
+          Esses dados são estritamente necessários para o serviço funcionar. Ao abrir o
           sistema, o navegador também baixa a fonte tipográfica e os ícones de Google Fonts e cdnjs (veja{" "}
           <A href="#compartilhamento">Com quem compartilhamos</A>).
         </p>
@@ -645,7 +657,7 @@ export default function PrivacidadePage() {
               <li>Os dados financeiros que a sua empresa coloca no Numin são dela. Nós os tratamos só para prestar o serviço.</li>
               <li>Não vendemos dados e não os usamos para publicidade.</li>
               <li>A conexão com o banco é pelo arquivo OFX que você importa. Nunca pedimos a senha do seu banco.</li>
-              <li>O site não usa cookies nem rastreamento. O sistema guarda no navegador só o necessário para manter você conectado.</li>
+              <li>O site não usa cookies nem rastreamento. O sistema usa só um cookie de sessão, necessário para manter você conectado, e nenhum cookie de rastreamento.</li>
               <li>Você pode exportar os seus dados e excluir a sua organização.</li>
             </ul>
             <p className="mt-3 text-sm text-muted">Este resumo não substitui o texto completo abaixo.</p>
