@@ -194,7 +194,7 @@ export default function Home() {
       </section>
 
       {/* Segurança */}
-      <section className="section">
+      <section id="seguranca" className="section anchor">
         <div className="container-x">
           <Reveal className="mx-auto max-w-2xl text-center">
             <span className="eyebrow">Segurança</span>

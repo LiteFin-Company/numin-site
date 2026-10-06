@@ -1,4 +1,4 @@
-import { NAV, SITE, CONTENT_PAGES, LEGAL_PAGES } from "@/lib/site";
+import { SITE, CONTENT_PAGES, LEGAL_PAGES, FOOTER_PRODUCT } from "@/lib/site";
 import { COMPANY } from "@/lib/empresa";
 
 // Campos da empresa ainda não preenchidos vêm como "[A PREENCHER: …]" e não
@@ -42,12 +42,12 @@ export default function Footer() {
           </p>
         </div>
 
-        <FooterColumn title="Produto" links={NAV} />
+        <FooterColumn title="Produto" links={FOOTER_PRODUCT} />
         <FooterColumn title="Conteúdo" links={CONTENT_PAGES} />
         <FooterColumn
-          title="Comece"
+          title="Empresa"
           links={[
-            { label: "Entrar", href: SITE.appUrl },
+            { label: "Entrar no Numin", href: SITE.appUrl },
             { label: "Criar conta", href: SITE.signupUrl },
             { label: SITE.email, href: `mailto:${SITE.email}` },
           ]}
