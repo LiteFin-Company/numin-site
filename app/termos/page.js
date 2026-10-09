@@ -303,7 +303,7 @@ const SECTIONS = [
           <li>
             As 10 primeiras empresas que contratarem o plano Profissional pela oferta Parceiros Numin usam o plano{" "}
             <B>sem custo até 31 de dezembro de 2026</B>. A partir de 1º de janeiro de 2027, passam a pagar{" "}
-            <B>R$ 89 por mês</B>.
+            <B>R$ 49 por mês</B>.
           </li>
           <li>
             Esse valor é mantido, sem o reajuste previsto acima, <B>enquanto a assinatura permanecer ativa e sem
