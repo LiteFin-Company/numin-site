@@ -243,21 +243,33 @@ const SECTIONS = [
     body: (
       <>
         <H3>Planos</H3>
-        <p>Todas as funcionalidades estão em todos os planos. O que muda é o tamanho da equipe e o acesso à API pública:</p>
+        <p>
+          O controle financeiro completo está em todos os planos. Cada plano inclui uma organização e muda no tamanho da
+          equipe, no número de contas com integração bancária direta e nas conexões com outros sistemas:
+        </p>
         <List>
           <li>
-            <B>Essencial:</B> até 2 membros.
+            <B>Essencial:</B> até 2 membros e 1 conta com integração bancária direta.
           </li>
           <li>
-            <B>Profissional:</B> até 5 membros, com API pública.
+            <B>Profissional:</B> até 5 membros, até 3 contas com integração bancária direta e conexão via MCP,
+            quando disponível.
           </li>
           <li>
-            <B>Avançado:</B> até 10 membros, com API pública.
+            <B>Avançado:</B> até 15 membros, integração bancária direta sem limite de contas, conexão via MCP,
+            quando disponível, e API pública.
           </li>
         </List>
         <p>
-          Os preços são os divulgados no site ou informados no momento da contratação, com os tributos incluídos. As
-          condições para organizações adicionais são as informadas na contratação.
+          Os limites valem por organização. A importação de extrato em OFX não tem limite em nenhum plano.
+        </p>
+        <p>
+          <B>Organizações adicionais:</B> você pode incluir outras organizações na mesma conta por R$ 49 (Essencial),
+          R$ 79 (Profissional) ou R$ 129 (Avançado) por mês cada, cobradas junto com o plano. Cada organização
+          adicional tem os mesmos recursos e limites do plano e pode ser cancelada a qualquer momento.
+        </p>
+        <p>
+          Os preços são os divulgados no site ou informados no momento da contratação, com os tributos incluídos.
         </p>
         <H3>Pagamento</H3>
         <List>
@@ -270,8 +282,8 @@ const SECTIONS = [
             contratação. Emitimos a nota fiscal referente à assinatura.
           </li>
           <li>
-            Para mudar para um plano com limite menor de membros, a organização precisa antes ficar dentro do novo
-            limite. As condições de ajuste de valor na mudança de plano são as informadas no momento da mudança.
+            Para mudar para um plano com limites menores, a organização precisa antes ficar dentro dos novos limites
+            de membros e de contas com integração bancária direta. As condições de ajuste de valor na mudança de plano são as informadas no momento da mudança.
           </li>
           <li>
             Se um pagamento não for feito, avisaremos por e-mail. Se continuar em aberto por mais de 15 dias após o
@@ -289,9 +301,9 @@ const SECTIONS = [
         <H3>Oferta Parceiros Numin</H3>
         <List>
           <li>
-            As 10 primeiras empresas que contratarem o plano Essencial pela oferta Parceiros Numin usam o plano{" "}
+            As 10 primeiras empresas que contratarem o plano Profissional pela oferta Parceiros Numin usam o plano{" "}
             <B>sem custo até 31 de dezembro de 2026</B>. A partir de 1º de janeiro de 2027, passam a pagar{" "}
-            <B>R$ 49,90 por mês</B>.
+            <B>R$ 89 por mês</B>.
           </li>
           <li>
             Esse valor é mantido, sem o reajuste previsto acima, <B>enquanto a assinatura permanecer ativa e sem
@@ -395,7 +407,7 @@ const SECTIONS = [
     title: "API pública",
     body: (
       <List>
-        <li>A API pública está disponível nos planos Profissional e Avançado.</li>
+        <li>A API pública está disponível no plano Avançado.</li>
         <li>
           O acesso é feito por chaves de API criadas pelos administradores, cada uma com um nível de permissão e, se
           desejado, uma data de validade. A chave completa é exibida uma única vez, na criação.

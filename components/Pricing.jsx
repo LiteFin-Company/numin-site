@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Sparkles } from "lucide-react";
-import { PLANS, SITE, FOUNDER_OFFER } from "@/lib/site";
+import { Building2, Check, Sparkles } from "lucide-react";
+import { PLANS, SITE, FOUNDER_OFFER, ORG_ADDON } from "@/lib/site";
 
 export default function Pricing() {
   const [annual, setAnnual] = useState(false);
@@ -36,7 +36,7 @@ export default function Pricing() {
         <span>
           <b>{FOUNDER_OFFER.name}:</b> as {FOUNDER_OFFER.slots} primeiras empresas usam o{" "}
           <b>{FOUNDER_OFFER.plan}</b> <b>grátis até {FOUNDER_OFFER.freeUntil}</b> e depois pagam{" "}
-          <b>{FOUNDER_OFFER.price}{FOUNDER_OFFER.period}</b>, para sempre.
+          <b className="whitespace-nowrap">{FOUNDER_OFFER.price}{FOUNDER_OFFER.period}</b>, para sempre.
         </span>
       </div>
 
@@ -68,10 +68,17 @@ export default function Pricing() {
                     <span className="text-3xl font-extrabold text-ink">Grátis</span>
                     <span className="text-sm text-muted">até {FOUNDER_OFFER.freeUntil}</span>
                   </div>
-                  <p className="mt-1 text-xs font-medium text-brand-700">
-                    a partir de {FOUNDER_OFFER.paidFrom}, <span className="tabnum">{FOUNDER_OFFER.price}{FOUNDER_OFFER.period}</span> para sempre{" "}
-                    <span className="tabnum font-normal text-muted line-through">{FOUNDER_OFFER.original}</span>
-                  </p>
+                  <div className="mt-3 rounded-xl border border-brand-100 bg-brand-50 px-4 py-3">
+                    <p className="text-xs font-medium text-brand-700">A partir de {FOUNDER_OFFER.paidFrom}</p>
+                    <p className="mt-0.5 flex flex-wrap items-baseline gap-x-2">
+                      <span className="tabnum text-xl font-extrabold text-ink">
+                        {FOUNDER_OFFER.price}
+                        <span className="text-sm font-semibold text-muted">{FOUNDER_OFFER.period}</span>
+                      </span>
+                      <span className="text-sm font-semibold text-brand-700">para sempre</span>
+                      <span className="tabnum text-sm text-muted line-through">{FOUNDER_OFFER.original}</span>
+                    </p>
+                  </div>
                 </>
               ) : (
                 <>
@@ -84,19 +91,34 @@ export default function Pricing() {
               )}
 
               <p className="mt-3 text-sm text-muted">{p.tagline}</p>
-              <ul className="mt-6 space-y-3">
-                {p.features.map((f) => (
-                  <li key={f} className="flex items-start gap-3 text-sm">
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-100 text-brand-700">
-                      <Check size={13} strokeWidth={3} />
-                    </span>
-                    <span className="text-ink-700">{f}</span>
-                  </li>
-                ))}
+              <ul className="mb-6 mt-6 space-y-3">
+                {p.features.map((f) => {
+                  // Item pode ser texto ou { text, soon } para recurso ainda não lançado.
+                  const text = typeof f === "string" ? f : f.text;
+                  return (
+                    <li key={text} className="flex items-start gap-3 text-sm">
+                      <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-100 text-brand-700">
+                        <Check size={13} strokeWidth={3} />
+                      </span>
+                      <span className="text-ink-700">
+                        {text}
+                        {f.soon && (
+                          <span className="ml-2 rounded-full bg-brand-50 px-2 py-0.5 text-[11px] font-semibold text-brand-700">Em breve</span>
+                        )}
+                      </span>
+                    </li>
+                  );
+                })}
               </ul>
+              <p className="mt-auto flex items-center gap-2 border-t border-slate-100 pt-5 text-sm text-muted">
+                <Building2 size={16} className="shrink-0 text-brand-600" aria-hidden />
+                <span>
+                  Empresa adicional: <span className="font-semibold text-ink">+ {ORG_ADDON[p.name]}/mês</span>
+                </span>
+              </p>
               <a
                 href={SITE.signupUrl}
-                className={`btn btn-lg mt-8 w-full ${isFounder || p.highlight ? "btn-primary" : "btn-ghost"}`}
+                className={`btn btn-lg mt-5 w-full ${isFounder || p.highlight ? "btn-primary" : "btn-ghost"}`}
               >
                 {isFounder ? FOUNDER_OFFER.cta : p.cta}
               </a>
@@ -104,6 +126,7 @@ export default function Pricing() {
           );
         })}
       </div>
+
     </>
   );
 }
