@@ -1,12 +1,12 @@
 import Image from "next/image";
-import FeatureVideo from "@/components/FeatureVideo";
-import { Check, ArrowRight } from "lucide-react";
+import FeatureTabs from "@/components/FeatureTabs";
+import { ArrowRight } from "lucide-react";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
 import Pricing from "@/components/Pricing";
 import Faq from "@/components/Faq";
-import { FEATURES, HIGHLIGHTS, SITE, SECURITY, PLANS, FAQ, BANK_INTEGRATIONS, OFX_FALLBACK } from "@/lib/site";
+import { FEATURES, SITE, SECURITY, PLANS, FAQ, BANK_INTEGRATIONS, OFX_FALLBACK } from "@/lib/site";
 
 export const metadata = {
   alternates: { canonical: "/" },
@@ -90,58 +90,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Destaques */}
-      <section className="section">
-        <div className="container-x space-y-20 md:space-y-28">
-          {HIGHLIGHTS.map((h, idx) => {
-            const Icon = h.icon;
-            const reversed = idx % 2 === 1;
-            return (
-              <Reveal key={h.title}>
-                <div className={`grid items-center gap-10 ${reversed ? "md:grid-cols-[1.15fr_0.85fr]" : "md:grid-cols-[0.85fr_1.15fr]"}`}>
-                  <div className={reversed ? "md:order-2" : ""}>
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
-                      <Icon size={24} />
-                    </div>
-                    <span className="eyebrow mt-5 block">{h.eyebrow}</span>
-                    <h2 className="mt-2 text-2xl font-bold tracking-tight text-ink md:text-3xl">{h.title}</h2>
-                    <p className="mt-4 text-lg leading-relaxed text-muted">{h.desc}</p>
-                    <ul className="mt-6 space-y-3">
-                      {h.points.map((p) => (
-                        <li key={p} className="flex items-start gap-3">
-                          <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-100 text-brand-700">
-                            <Check size={13} strokeWidth={3} />
-                          </span>
-                          <span className="text-ink-700">{p}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className={reversed ? "md:order-1" : ""}>
-                    <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_30px_60px_-30px_rgba(14,51,106,0.35)]">
-                      <div className="flex items-center gap-1.5 border-b border-slate-100 bg-slate-50 px-3 py-2.5">
-                        <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
-                        <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
-                        <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
-                        <div className="ml-2 flex-1">
-                          <div className="mx-auto w-fit rounded border border-slate-200 bg-white px-2.5 py-0.5 text-[10px] text-slate-500">
-                            app.numin.com.br
-                          </div>
-                        </div>
-                      </div>
-                      <FeatureVideo
-                        src={h.video}
-                        poster={`${h.video}.webp`}
-                        width={1440}
-                        height={762}
-                        label={h.alt}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </Reveal>
-            );
-          })}
+      {/* Destaques: abas com texto e vídeo de cada funcionalidade */}
+      <section id="destaques" className="section anchor">
+        <div className="container-x">
+          <Reveal className="mx-auto max-w-2xl text-center">
+            <span className="eyebrow">Na prática</span>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-ink md:text-4xl">Veja o Numin funcionando</h2>
+          </Reveal>
+          <div className="mt-12">
+            <FeatureTabs />
+          </div>
         </div>
       </section>
 
