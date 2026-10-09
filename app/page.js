@@ -111,43 +111,44 @@ export default function Home() {
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-ink md:text-4xl">
               O extrato chega sozinho para conciliar
             </h2>
-            <p className="mt-4 text-lg text-muted">
-              Conecte a conta da empresa pela API oficial do banco e o Numin busca o extrato automaticamente. As
-              transações chegam prontas para conciliar, sem baixar arquivo.
-            </p>
+            <p className="mt-4 text-lg text-muted">Conecte o banco da empresa e concilie sem baixar arquivo.</p>
           </Reveal>
-          <div className="mx-auto mt-14 grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {BANK_INTEGRATIONS.map((b) => (
-              <Reveal key={b.name} className="h-full">
-                <div className="card flex h-full flex-col items-center bg-white text-center">
-                  <Image
-                    src={b.logo}
-                    alt={`Logo ${b.name}`}
-                    width={64}
-                    height={64}
-                    unoptimized
-                    className="h-16 w-16 rounded-2xl ring-1 ring-slate-200"
-                  />
-                  <h3 className="mt-4 text-base font-semibold text-ink">{b.name}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">Extrato automático pela API oficial do banco.</p>
-                </div>
-              </Reveal>
-            ))}
+          <div className="mx-auto mt-14 grid max-w-4xl gap-6 md:grid-cols-2">
             <Reveal className="h-full">
-              <div className="card flex h-full flex-col items-center border-dashed bg-white text-center">
-                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-50 text-brand-600">
-                  <OFX_FALLBACK.icon size={28} />
+              <div className="flex h-full flex-col items-center rounded-3xl bg-white px-8 pb-10 pt-12 text-center shadow-[0_1px_2px_rgba(14,51,106,0.06)]">
+                <div className="flex h-24 items-center justify-center gap-5">
+                  {BANK_INTEGRATIONS.map((b, i) => (
+                    <div key={b.name} className="floaty" style={{ animationDelay: `${i * 1.1}s` }}>
+                      <Image
+                        src={b.logo}
+                        alt={`Logo ${b.name}`}
+                        width={64}
+                        height={64}
+                        unoptimized
+                        className="h-16 w-16 rounded-2xl ring-1 ring-slate-200 shadow-[0_14px_28px_-14px_rgba(14,51,106,0.45)]"
+                      />
+                    </div>
+                  ))}
                 </div>
-                <h3 className="mt-4 text-base font-semibold text-ink">{OFX_FALLBACK.name}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{OFX_FALLBACK.desc}</p>
+                <h3 className="mt-8 text-xl font-semibold text-ink">Integração direta</h3>
+                <p className="mt-2 text-muted">Extrato automático pela API oficial do banco.</p>
+              </div>
+            </Reveal>
+            <Reveal className="h-full">
+              <div className="flex h-full flex-col items-center rounded-3xl bg-white px-8 pb-10 pt-12 text-center shadow-[0_1px_2px_rgba(14,51,106,0.06)]">
+                <div className="flex h-24 items-center justify-center">
+                  <div className="floaty flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-50 text-brand-600 ring-1 ring-brand-100 shadow-[0_14px_28px_-14px_rgba(14,51,106,0.35)]" style={{ animationDelay: "0.5s" }}>
+                    <OFX_FALLBACK.icon size={28} />
+                  </div>
+                </div>
+                <h3 className="mt-8 text-xl font-semibold text-ink">Qualquer outro banco</h3>
+                <p className="mt-2 text-muted">Importe o extrato em OFX.</p>
               </div>
             </Reveal>
           </div>
-          <p className="mx-auto mt-8 max-w-2xl text-center text-sm text-muted">
-            A conexão usa as credenciais e o certificado digital da própria empresa, cadastrados no portal do banco. O
-            Numin nunca pede a senha do internet banking.
+          <p className="mt-8 text-center text-xs text-muted/80">
+            Sem senha do internet banking. As marcas exibidas pertencem aos respectivos bancos.
           </p>
-          <p className="mt-2 text-center text-xs text-muted/80">As marcas exibidas pertencem aos respectivos bancos.</p>
         </div>
       </section>
 
