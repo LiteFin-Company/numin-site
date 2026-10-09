@@ -34,7 +34,7 @@ export default function Header() {
           <img
             src={solid ? "/numin-horizontal-cor.svg" : "/numin-horizontal-branco.svg"}
             alt="Numin — Controle financeiro"
-            className="h-8 w-auto"
+            className="h-7 w-auto"
           />
         </Link>
 
