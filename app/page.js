@@ -196,7 +196,7 @@ export default function Home() {
       {/* Preços */}
       <section id="precos" className="section anchor bg-nuvem">
         <div className="container-x">
-          <Reveal className="mx-auto max-w-2xl text-center">
+          <Reveal className="mx-auto max-w-4xl text-center">
             <span className="eyebrow">Planos</span>
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-ink md:text-4xl">
               Um plano para cada tamanho de equipe
