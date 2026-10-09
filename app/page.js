@@ -1,6 +1,7 @@
 import Image from "next/image";
 import FeatureTabs from "@/components/FeatureTabs";
-import { ArrowRight, Check } from "lucide-react";
+import FloatCard from "@/components/FloatCard";
+import { ArrowRight, Check, Lock, Scale } from "lucide-react";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
@@ -208,44 +209,47 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Segurança */}
+      {/* Segurança: foto de um lado, itens do outro */}
       <section id="seguranca" className="section anchor bg-nuvem">
-        <div className="container-x">
-          <Reveal className="mx-auto max-w-2xl text-center">
-            <span className="eyebrow">Segurança</span>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-ink md:text-4xl">
-              Seu financeiro protegido
-            </h2>
-            <p className="mt-4 text-lg text-muted">
-              Controle de acesso, histórico e conexão segura — do jeito que dado financeiro exige.
-            </p>
+        <div className="container-x grid max-w-6xl items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+          <Reveal>
+            <div className="relative mx-auto max-w-md lg:max-w-none">
+              <Image
+                src="/seguranca-pessoa-3.webp"
+                alt="Homem sorrindo, sentado diante do notebook numa conversa de trabalho"
+                width={1200}
+                height={1500}
+                sizes="(min-width: 1024px) 480px, (min-width: 640px) 448px, 100vw"
+                className="aspect-[4/5] w-full rounded-3xl object-cover shadow-[0_30px_60px_-30px_rgba(14,51,106,0.45)]"
+              />
+              <FloatCard icon={Lock} title="Conexão criptografada" className="flex -left-3 top-10 sm:-left-6" delay="0s" onLight />
+              <FloatCard icon={Scale} title="Dados tratados conforme a LGPD" className="flex -right-3 bottom-12 sm:-right-6" delay="1.4s" onLight />
+            </div>
           </Reveal>
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {SECURITY.map((s) => {
-              const Icon = s.icon;
-              return (
-                <Reveal key={s.title} className="h-full">
-                  <div className="card h-full">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
-                      <Icon size={22} />
+          <Reveal>
+            <span className="eyebrow">Segurança</span>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-ink md:text-4xl">Seu financeiro protegido</h2>
+            <p className="mt-4 text-lg text-muted">Do jeito que dado financeiro exige.</p>
+            <ul className="mt-8 grid gap-x-8 gap-y-6 sm:grid-cols-2">
+              {SECURITY.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <li key={item.title} className="flex gap-3">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-brand-600 ring-1 ring-slate-200">
+                      <Icon size={19} />
+                    </span>
+                    <div>
+                      <h3 className="font-semibold text-ink">{item.title}</h3>
+                      <p className="mt-1 text-sm leading-relaxed text-muted">{item.short}</p>
                     </div>
-                    <h3 className="mt-4 text-base font-semibold text-ink">{s.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted">{s.desc}</p>
-                    {s.href && (
-                      <a href={s.href} className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-brand-600 hover:text-brand-700">
-                        Ler a política <ArrowRight size={14} />
-                      </a>
-                    )}
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
-          <div className="mt-10 text-center">
-            <a href="/seguranca" className="btn btn-ghost">
+                  </li>
+                );
+              })}
+            </ul>
+            <a href="/seguranca" className="btn btn-ghost mt-10">
               Ver tudo sobre segurança <ArrowRight size={16} />
             </a>
-          </div>
+          </Reveal>
         </div>
       </section>
 

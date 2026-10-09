@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { ArrowRight, Clock, ShieldCheck, Eye, Users } from "lucide-react";
 import { SITE } from "@/lib/site";
+import FloatCard from "@/components/FloatCard";
 
 // No celular a foto é estreita e os cards cobririam a pessoa: só aparecem a partir de sm.
 const BENEFITS = [
@@ -10,19 +11,6 @@ const BENEFITS = [
   { icon: Eye, title: "Clareza do começo ao fim", pos: "hidden sm:flex -left-3 bottom-8 md:-left-12", delay: "2s" },
 ];
 
-function FloatCard({ icon: Icon, title, className, delay }) {
-  return (
-    <div
-      className={`floaty absolute items-center gap-2 rounded-xl border border-white/25 bg-white/10 px-3 py-2 shadow-[0_14px_32px_-16px_rgba(8,33,74,0.55)] backdrop-blur-md ${className}`}
-      style={{ animationDelay: delay }}
-    >
-      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-white/15 text-white">
-        <Icon size={15} />
-      </span>
-      <p className="text-xs font-semibold text-white">{title}</p>
-    </div>
-  );
-}
 
 export default function Hero() {
   return (
