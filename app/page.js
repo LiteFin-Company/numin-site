@@ -1,5 +1,6 @@
 import Image from "next/image";
 import FeatureTabs from "@/components/FeatureTabs";
+import FeatureList from "@/components/FeatureList";
 import FloatCard from "@/components/FloatCard";
 import { ArrowRight, Check, Lock, Scale } from "lucide-react";
 import Hero from "@/components/Hero";
@@ -7,7 +8,7 @@ import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
 import Pricing from "@/components/Pricing";
 import Faq from "@/components/Faq";
-import { FEATURES, SITE, SECURITY, PLANS, FAQ, BANK_INTEGRATIONS, OFX_FALLBACK } from "@/lib/site";
+import { SITE, SECURITY, PLANS, FAQ, BANK_INTEGRATIONS, OFX_FALLBACK } from "@/lib/site";
 
 export const metadata = {
   alternates: { canonical: "/" },
@@ -59,34 +60,18 @@ export default function Home() {
 
       <Hero />
 
-      {/* Funcionalidades */}
+      {/* Funcionalidades: lista com detalhe e print da tela */}
       <section id="funcionalidades" className="section anchor bg-nuvem">
         <div className="container-x">
           <Reveal className="mx-auto max-w-2xl text-center">
             <span className="eyebrow">Funcionalidades</span>
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-ink md:text-4xl">
-              Uma ferramenta, todo o seu financeiro
+              Da rotina financeira à visão do negócio
             </h2>
-            <p className="mt-4 text-lg text-muted">
-              Do dia a dia operacional à visão gerencial.
-            </p>
+            <p className="mt-4 text-lg text-muted">Ferramentas que ligam o dia a dia às decisões da sua empresa.</p>
           </Reveal>
-
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {FEATURES.map((f) => {
-              const Icon = f.icon;
-              return (
-                <Reveal key={f.title} className="h-full">
-                  <div className="card card-hover h-full p-7">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500 text-white shadow-[0_8px_24px_rgba(0,121,253,0.26)]">
-                      <Icon size={24} />
-                    </div>
-                    <h3 className="mt-5 text-lg font-bold text-ink">{f.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted">{f.desc}</p>
-                  </div>
-                </Reveal>
-              );
-            })}
+          <div className="mx-auto mt-12 max-w-5xl">
+            <FeatureList />
           </div>
         </div>
       </section>
