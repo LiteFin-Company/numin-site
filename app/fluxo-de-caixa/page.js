@@ -234,7 +234,7 @@ export default function FluxoDeCaixaPage() {
             <Image
               src="/feat-fluxo.webp"
               width={1600}
-              height={789}
+              height={790}
               sizes="(min-width: 768px) 720px, calc(100vw - 48px)"
               alt="Fluxo de caixa do Numin com receitas e despesas por categoria mês a mês, mostrando valores realizados e previstos e o total de cada linha"
               className="block h-auto w-full"

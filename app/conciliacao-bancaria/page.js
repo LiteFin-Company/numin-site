@@ -239,7 +239,7 @@ export default function ConciliacaoBancariaPage() {
             <Image
               src="/feat-conciliacao.webp"
               width={1600}
-              height={792}
+              height={790}
               sizes="(min-width: 768px) 720px, calc(100vw - 48px)"
               alt="Tela de conciliação do Numin com o progresso do mês, transações do extrato pendentes e sugestões de lançamento de alta confiança para confirmar"
               className="block h-auto w-full"
