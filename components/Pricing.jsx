@@ -30,15 +30,6 @@ export default function Pricing() {
         </span>
       </div>
 
-      {/* Oferta Parceiros Numin */}
-      <div className="mx-auto mt-10 flex max-w-3xl items-center justify-center gap-2 rounded-xl border border-brand-200 bg-brand-50 px-4 py-3 text-center text-sm text-ink">
-        <Sparkles size={16} className="shrink-0 text-brand-600" />
-        <span>
-          <b>{FOUNDER_OFFER.name}:</b> as {FOUNDER_OFFER.slots} primeiras empresas usam o{" "}
-          <b>{FOUNDER_OFFER.plan}</b> <b>grátis até {FOUNDER_OFFER.freeUntil}</b> e depois pagam{" "}
-          <b className="whitespace-nowrap">{FOUNDER_OFFER.price}{FOUNDER_OFFER.period}</b>, para sempre.
-        </span>
-      </div>
 
       <div className="mt-8 grid gap-6 lg:grid-cols-3">
         {PLANS.map((p) => {

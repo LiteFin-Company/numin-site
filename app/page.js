@@ -2,7 +2,7 @@ import Image from "next/image";
 import FeatureTabs from "@/components/FeatureTabs";
 import FeatureList from "@/components/FeatureList";
 import FloatCard from "@/components/FloatCard";
-import { ArrowRight, Check, Lock, Scale } from "lucide-react";
+import { ArrowRight, Check, Landmark, Lock, RefreshCcw, Scale } from "lucide-react";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
@@ -89,52 +89,63 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Integrações bancárias */}
+      {/* Integrações bancárias: caixas empilhadas à esquerda, foto à direita */}
       <section id="integracoes" className="section anchor bg-nuvem">
-        <div className="container-x">
-          <Reveal className="mx-auto max-w-2xl text-center">
+        <div className="container-x grid max-w-6xl items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
+          <Reveal>
             <span className="eyebrow">Integrações bancárias</span>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-ink md:text-4xl">
-              O extrato chega sozinho para conciliar
-            </h2>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-ink md:text-4xl">O extrato chega sozinho para conciliar</h2>
             <p className="mt-4 text-lg text-muted">Conecte o banco da empresa e concilie sem baixar arquivo.</p>
-          </Reveal>
-          <div className="mx-auto mt-14 grid max-w-4xl gap-6 md:grid-cols-2">
-            <Reveal className="h-full">
-              <div className="flex h-full flex-col items-center rounded-3xl bg-white px-8 pb-10 pt-12 text-center shadow-[0_1px_2px_rgba(14,51,106,0.06)]">
-                <div className="flex h-24 items-center justify-center gap-5">
+
+            <div className="mt-8 space-y-4">
+              <div className="flex items-center gap-5 rounded-2xl bg-white p-5 shadow-[0_1px_2px_rgba(14,51,106,0.06)]">
+                <div className="flex shrink-0 gap-1.5">
                   {BANK_INTEGRATIONS.map((b, i) => (
                     <div key={b.name} className="floaty" style={{ animationDelay: `${i * 1.1}s` }}>
                       <Image
                         src={b.logo}
                         alt={`Logo ${b.name}`}
-                        width={64}
-                        height={64}
+                        width={40}
+                        height={40}
                         unoptimized
-                        className="h-16 w-16 rounded-2xl ring-1 ring-slate-200 shadow-[0_14px_28px_-14px_rgba(14,51,106,0.45)]"
+                        className="h-10 w-10 rounded-xl ring-1 ring-slate-200 shadow-[0_8px_18px_-10px_rgba(14,51,106,0.5)]"
                       />
                     </div>
                   ))}
                 </div>
-                <h3 className="mt-8 text-xl font-semibold text-ink">Integração direta</h3>
-                <p className="mt-2 text-muted">Extrato automático pela API oficial do banco.</p>
-              </div>
-            </Reveal>
-            <Reveal className="h-full">
-              <div className="flex h-full flex-col items-center rounded-3xl bg-white px-8 pb-10 pt-12 text-center shadow-[0_1px_2px_rgba(14,51,106,0.06)]">
-                <div className="flex h-24 items-center justify-center">
-                  <div className="floaty flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-50 text-brand-600 ring-1 ring-brand-100 shadow-[0_14px_28px_-14px_rgba(14,51,106,0.35)]" style={{ animationDelay: "0.5s" }}>
-                    <OFX_FALLBACK.icon size={28} />
-                  </div>
+                <div>
+                  <h3 className="font-semibold text-ink">Integração direta</h3>
+                  <p className="mt-0.5 text-sm text-muted">Extrato automático pela API oficial do banco.</p>
                 </div>
-                <h3 className="mt-8 text-xl font-semibold text-ink">Qualquer outro banco</h3>
-                <p className="mt-2 text-muted">Importe o extrato em OFX.</p>
               </div>
-            </Reveal>
-          </div>
-          <p className="mt-8 text-center text-xs text-muted/80">
-            Sem senha do internet banking. As marcas exibidas pertencem aos respectivos bancos.
-          </p>
+              <div className="flex items-center gap-5 rounded-2xl bg-white p-5 shadow-[0_1px_2px_rgba(14,51,106,0.06)]">
+                <div className="floaty flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-600 ring-1 ring-brand-100" style={{ animationDelay: "0.5s" }}>
+                  <OFX_FALLBACK.icon size={20} />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-ink">Qualquer outro banco</h3>
+                  <p className="mt-0.5 text-sm text-muted">Importe o extrato em OFX.</p>
+                </div>
+              </div>
+            </div>
+            <p className="mt-6 text-xs text-muted/80">
+              Sem senha do internet banking. As marcas exibidas pertencem aos respectivos bancos.
+            </p>
+          </Reveal>
+          <Reveal>
+            <div className="relative mx-auto max-w-md lg:max-w-none">
+            <Image
+              src="/integracoes-foto.webp"
+              alt="Mulher sorrindo ao celular, trabalhando no notebook perto da janela"
+              width={1200}
+              height={1500}
+              sizes="(min-width: 1024px) 440px, (min-width: 640px) 448px, 100vw"
+              className="aspect-[4/5] w-full rounded-3xl object-cover shadow-[0_30px_60px_-30px_rgba(14,51,106,0.45)]"
+            />
+            <FloatCard icon={RefreshCcw} title="Extrato sincronizado" className="flex -right-3 top-10 sm:-right-6" delay="0s" onLight />
+            <FloatCard icon={Landmark} title="Sem a senha do seu banco" className="flex -left-3 bottom-12 sm:-left-6" delay="1.4s" onLight />
+            </div>
+          </Reveal>
         </div>
       </section>
 
