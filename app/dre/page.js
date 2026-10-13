@@ -243,7 +243,7 @@ export default function DrePage() {
             <Image
               src="/feat-relatorios.webp"
               width={1600}
-              height={794}
+              height={790}
               sizes="(min-width: 768px) 720px, calc(100vw - 48px)"
               alt="DRE no Numin com receitas e despesas por categoria, colunas de previsto, realizado, variação em reais e em percentual e análise vertical"
               className="block h-auto w-full"
