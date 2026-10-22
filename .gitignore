@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Claude Code: agentes são versionados; worktrees e config local não
+/.claude/worktrees/
+/.claude/settings.local.json
