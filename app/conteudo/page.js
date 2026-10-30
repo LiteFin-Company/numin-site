@@ -38,7 +38,7 @@ export default function ConteudoPage() {
             <Link
               key={post.href}
               href={post.href}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-[0_18px_40px_-24px_rgba(14,51,106,0.45)]"
+              className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-[0_18px_40px_-24px_rgba(9,30,66,0.45)]"
             >
               {post.cover ? (
                 <Image

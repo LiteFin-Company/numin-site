@@ -112,8 +112,8 @@ export default function SegurancaPage() {
               <div className="grid gap-4 sm:grid-cols-2">
                 {items.map(({ icon: Icon, title: itemTitle, desc }) => (
                   <Reveal key={itemTitle} className="h-full">
-                    <div className="group h-full rounded-2xl border border-slate-200 bg-white p-6 transition hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-[0_18px_40px_-24px_rgba(14,51,106,0.45)]">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-500 text-white shadow-[0_8px_20px_-8px_rgba(0,121,253,0.6)]">
+                    <div className="group h-full rounded-2xl border border-slate-200 bg-white p-6 transition hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-[0_18px_40px_-24px_rgba(9,30,66,0.45)]">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-500 text-white shadow-[0_8px_20px_-8px_rgba(0,82,204,0.6)]">
                         <Icon size={20} />
                       </div>
                       <h3 className="mt-5 text-lg font-semibold text-ink">{itemTitle}</h3>

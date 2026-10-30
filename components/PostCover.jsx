@@ -81,7 +81,7 @@ export default function PostCover({ icon, variant = 0, className = "" }) {
         <Shapes variant={variant % 4} />
       </svg>
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="relative flex h-[46%] aspect-[4/5] items-center justify-center rounded-2xl bg-white shadow-[0_18px_40px_-16px_rgba(14,51,106,0.45)]">
+        <div className="relative flex h-[46%] aspect-[4/5] items-center justify-center rounded-2xl bg-white shadow-[0_18px_40px_-16px_rgba(9,30,66,0.45)]">
           <span className="absolute -right-3 -top-3 h-[28%] aspect-square rounded-full border-4 border-white bg-brand-500" />
           <Icon className="h-[42%] w-[42%] text-brand-600" strokeWidth={1.75} />
         </div>

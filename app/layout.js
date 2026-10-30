@@ -1,17 +1,13 @@
-import { Inter, Quicksand } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import { SITE } from "@/lib/site";
 
-const inter = Inter({
-  variable: "--font-inter",
+// Mesma fonte do app, no texto e nos títulos.
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
   subsets: ["latin"],
-});
-
-const quicksand = Quicksand({
-  variable: "--font-quicksand",
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 // Cada página declara a própria canônica (alternates.canonical); aqui fica só
@@ -51,12 +47,13 @@ export const metadata = {
 };
 
 export const viewport = {
-  themeColor: "#0079FD",
+  // Azul primário do app (brand-600 em app/globals.css); metadata não lê CSS.
+  themeColor: "#0052CC",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="pt-BR" className={`${inter.variable} ${quicksand.variable} h-full antialiased`}>
+    <html lang="pt-BR" className={`${jakarta.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-white">
         <Header />
         <main className="flex-1">{children}</main>

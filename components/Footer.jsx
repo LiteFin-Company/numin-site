@@ -16,7 +16,7 @@ function FooterColumn({ title, links }) {
       <ul className="mt-4 space-y-2 text-sm">
         {links.map((item) => (
           <li key={item.href}>
-            <a href={item.href} className="text-white/75 transition-colors hover:text-white">
+            <a href={item.href} className="text-white/85 transition-colors hover:text-white">
               {item.label}
             </a>
           </li>
@@ -29,7 +29,7 @@ function FooterColumn({ title, links }) {
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="text-white/75">
+    <footer className="text-white/85">
       <div className="container-x grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -37,7 +37,7 @@ export default function Footer() {
           <p className="mt-4 max-w-xs font-display text-base font-semibold text-white">
             {SITE.shortSignature}
           </p>
-          <p className="mt-2 max-w-xs text-sm leading-relaxed text-white/75">
+          <p className="mt-2 max-w-xs text-sm leading-relaxed text-white/85">
             Todo o financeiro da sua empresa em um só lugar.
           </p>
         </div>

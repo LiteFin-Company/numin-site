@@ -98,7 +98,7 @@ export default function Home() {
             <p className="mt-4 text-lg text-muted">Conecte o banco da empresa e concilie sem baixar arquivo.</p>
 
             <div className="mt-8 space-y-4">
-              <div className="flex items-center gap-5 rounded-2xl bg-white p-5 shadow-[0_1px_2px_rgba(14,51,106,0.06)]">
+              <div className="flex items-center gap-5 rounded-2xl bg-white p-5 shadow-[0_1px_2px_rgba(9,30,66,0.06)]">
                 <div className="flex shrink-0 gap-1.5">
                   {BANK_INTEGRATIONS.map((b, i) => (
                     <div key={b.name} className="floaty" style={{ animationDelay: `${i * 1.1}s` }}>
@@ -108,7 +108,7 @@ export default function Home() {
                         width={40}
                         height={40}
                         unoptimized
-                        className="h-10 w-10 rounded-xl ring-1 ring-slate-200 shadow-[0_8px_18px_-10px_rgba(14,51,106,0.5)]"
+                        className="h-10 w-10 rounded-xl ring-1 ring-slate-200 shadow-[0_8px_18px_-10px_rgba(9,30,66,0.5)]"
                       />
                     </div>
                   ))}
@@ -118,7 +118,7 @@ export default function Home() {
                   <p className="mt-0.5 text-sm text-muted">Extrato automático pela API oficial do banco.</p>
                 </div>
               </div>
-              <div className="flex items-center gap-5 rounded-2xl bg-white p-5 shadow-[0_1px_2px_rgba(14,51,106,0.06)]">
+              <div className="flex items-center gap-5 rounded-2xl bg-white p-5 shadow-[0_1px_2px_rgba(9,30,66,0.06)]">
                 <div className="floaty flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-600 ring-1 ring-brand-100" style={{ animationDelay: "0.5s" }}>
                   <OFX_FALLBACK.icon size={20} />
                 </div>
@@ -128,7 +128,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <p className="mt-6 text-xs text-muted/80">
+            <p className="mt-6 text-xs text-muted">
               Sem senha do internet banking. As marcas exibidas pertencem aos respectivos bancos.
             </p>
           </Reveal>
@@ -140,7 +140,7 @@ export default function Home() {
               width={1200}
               height={1500}
               sizes="(min-width: 1024px) 440px, (min-width: 640px) 448px, 100vw"
-              className="aspect-[4/5] w-full rounded-3xl object-cover shadow-[0_30px_60px_-30px_rgba(14,51,106,0.45)]"
+              className="aspect-[4/5] w-full rounded-3xl object-cover shadow-[0_30px_60px_-30px_rgba(9,30,66,0.45)]"
             />
             <FloatCard icon={RefreshCcw} title="Extrato sincronizado" className="flex -right-3 top-10 sm:-right-6" delay="0s" onLight />
             <FloatCard icon={Landmark} title="Sem a senha do seu banco" className="flex -left-3 bottom-12 sm:-left-6" delay="1.4s" onLight />
@@ -185,7 +185,7 @@ export default function Home() {
                   Como foi o resultado de setembro?
                 </p>
               </div>
-              <div className="mt-4 max-w-[90%] rounded-2xl rounded-bl-md bg-white px-4 py-3 text-sm leading-relaxed text-ink-700 shadow-[0_1px_2px_rgba(14,51,106,0.08)]">
+              <div className="mt-4 max-w-[90%] rounded-2xl rounded-bl-md bg-white px-4 py-3 text-sm leading-relaxed text-ink-700 shadow-[0_1px_2px_rgba(9,30,66,0.08)]">
                 Em setembro, a receita foi de <strong className="text-ink">R$ 31.300</strong> e as despesas somaram{" "}
                 <strong className="text-ink">R$ 21.467</strong>. O resultado ficou em{" "}
                 <strong className="text-positive">R$ 9.833</strong>, com margem de 31%.
@@ -195,7 +195,7 @@ export default function Home() {
                   E o que vence esta semana?
                 </p>
               </div>
-              <div className="mt-4 flex w-fit items-center gap-1 rounded-2xl rounded-bl-md bg-white px-4 py-3.5 shadow-[0_1px_2px_rgba(14,51,106,0.08)]">
+              <div className="mt-4 flex w-fit items-center gap-1 rounded-2xl rounded-bl-md bg-white px-4 py-3.5 shadow-[0_1px_2px_rgba(9,30,66,0.08)]">
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand-300" />
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand-300 [animation-delay:200ms]" />
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand-300 [animation-delay:400ms]" />
@@ -216,7 +216,7 @@ export default function Home() {
                 width={1200}
                 height={1500}
                 sizes="(min-width: 1024px) 480px, (min-width: 640px) 448px, 100vw"
-                className="aspect-[4/5] w-full rounded-3xl object-cover shadow-[0_30px_60px_-30px_rgba(14,51,106,0.45)]"
+                className="aspect-[4/5] w-full rounded-3xl object-cover shadow-[0_30px_60px_-30px_rgba(9,30,66,0.45)]"
               />
               <FloatCard icon={Lock} title="Conexão criptografada" className="flex -left-3 top-10 sm:-left-6" delay="0s" onLight />
               <FloatCard icon={Scale} title="Dados tratados conforme a LGPD" className="flex -right-3 bottom-12 sm:-right-6" delay="1.4s" onLight />
