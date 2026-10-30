@@ -27,7 +27,7 @@ export default function FeatureList() {
               onClick={() => setActive(i)}
               className={`flex shrink-0 items-center gap-3 rounded-xl px-4 py-2.5 text-left text-[15px] transition-colors ${
                 selected
-                  ? "bg-white font-semibold text-ink shadow-[0_1px_3px_rgba(14,51,106,0.12)] ring-1 ring-slate-200"
+                  ? "bg-white font-semibold text-ink shadow-[0_1px_3px_rgba(9,30,66,0.12)] ring-1 ring-slate-200"
                   : "font-medium text-muted hover:bg-white/60 hover:text-ink"
               }`}
             >
@@ -41,7 +41,7 @@ export default function FeatureList() {
       <div id="func-panel" role="tabpanel" aria-labelledby={`func-tab-${active}`} className="self-start overflow-hidden rounded-3xl bg-white p-6 md:p-8">
         <h3 className="text-xl font-bold tracking-tight text-ink md:text-2xl">{f.title}</h3>
         <p className="mt-3 leading-relaxed text-muted">{f.desc}</p>
-        <div className="mx-auto mt-6 max-w-xl overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_24px_50px_-28px_rgba(14,51,106,0.45)]">
+        <div className="mx-auto mt-6 max-w-xl overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_24px_50px_-28px_rgba(9,30,66,0.45)]">
           {FEATURES.map((item, i) => (
             <Image
               key={item.image}

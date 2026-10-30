@@ -131,7 +131,7 @@ export default function FeatureTabs() {
         <div className="relative bg-[linear-gradient(135deg,var(--color-brand-100)_0%,#ffffff_45%,var(--color-brand-50)_100%)] p-6 md:p-10">
           <span className="text-xs font-semibold uppercase tracking-[0.14em] text-brand-600">{h.tab}</span>
           <p className="mt-1 font-display text-xl font-bold tracking-tight text-ink md:text-2xl">{h.eyebrow}</p>
-          <div className="mt-5 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_30px_60px_-30px_rgba(14,51,106,0.45)]">
+          <div className="mt-5 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_30px_60px_-30px_rgba(9,30,66,0.45)]">
             <div className="flex items-center gap-1.5 border-b border-slate-100 bg-slate-50 px-3 py-2.5">
               <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
               <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />

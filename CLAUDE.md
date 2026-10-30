@@ -11,7 +11,7 @@ Site institucional e de vendas do Numin (`numin.com.br`). Next.js 16 (App Router
 - `app/seguranca/`, `app/privacidade/`, `app/termos/`: páginas institucionais
 - `app/conciliacao-bancaria/`, `app/fluxo-de-caixa/`, `app/dre/`: artigos antigos, mantidos na mesma URL
 - `lib/site.js`: conteúdo compartilhado (navegação, funcionalidades, planos e preços, textos do site); `lib/posts.js`: leitura dos posts
-- `app/globals.css`: tokens do brand kit em `@theme` (não há `tailwind.config.js`)
+- `app/globals.css`: tokens de cor e fonte em `@theme`, que seguem o app (não há `tailwind.config.js`)
 
 ## Como rodar
 
@@ -32,7 +32,7 @@ npm run build                          # build estático
 
 ## Regras do site
 
-- **Marca:** cores e fontes só pelos tokens de `app/globals.css` (brand kit oficial v1.0). Quicksand nos títulos, Inter no texto. O azul da marca (`brand-500`) fica perto de 4:1 como texto: botão, link e eyebrow usam `brand-600` ou mais escuro.
+- **Marca:** cores e fontes só pelos tokens de `app/globals.css`, que seguem o app (`~/Projetos/numin/frontend/src/styles/global.css`); o logotipo (`public/*.svg`, `app/icon.svg`, favicon, apple-icon, opengraph-image) segue o brand kit e não muda. Plus Jakarta Sans no texto e nos títulos. Texto e botão com contraste AA (4,5:1): botão, link e eyebrow usam `brand-600` ou mais escuro; o azul claro (`brand-400`) nunca é texto; texto secundário é `muted` (o cinza-claro do app, `#8993A4`, não serve como texto).
 - **Tagline e assinatura:** "Números que fazem sentido." e "Do número à decisão." nunca na mesma tela.
 - **Nunca sugerir IA** (faísca, robô, "assistente inteligente", "agentes de IA"). Exceção: a seção e o recurso "Conexão via MCP" podem citar Claude, ChatGPT e "assistente de IA".
 - **Ícones:** `lucide-react`. **Nunca emoji.**
