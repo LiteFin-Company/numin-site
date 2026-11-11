@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Footer from "@/components/Footer";
-import { COMPANY, LEGAL_LAST_UPDATED } from "@/lib/empresa";
+import { COMPANY, PRIVACY_LAST_UPDATED } from "@/lib/empresa";
 
 export const metadata = {
   title: "Política de Privacidade",
@@ -71,7 +71,7 @@ function InfoCard({ title, rows }) {
 const BASES_LEGAIS = [
   {
     title: "Criar e manter sua conta, autenticar o acesso e prestar o serviço contratado",
-    dados: "Nome, e-mail, senha (guardada só como hash), organizações às quais você pertence e seu papel em cada uma, dados cadastrais da organização.",
+    dados: "Nome, e-mail, senha (guardada só como hash), organizações às quais você pertence e seu papel em cada uma, data e hora do seu último acesso a cada organização (que os administradores dela veem na lista de membros), dados cadastrais da organização.",
     base: "Execução de contrato ou de procedimentos preliminares a ele (art. 7º, V).",
   },
   {
@@ -643,7 +643,7 @@ export default function PrivacidadePage() {
           <header>
             <span className="eyebrow">Documentos legais</span>
             <h1 className="mt-3 text-4xl font-bold tracking-tight text-ink md:text-5xl">Política de Privacidade</h1>
-            <p className="mt-4 text-sm text-muted">Última atualização: {LEGAL_LAST_UPDATED}</p>
+            <p className="mt-4 text-sm text-muted">Última atualização: {PRIVACY_LAST_UPDATED}</p>
             <p className="mt-6 text-lg leading-relaxed text-muted">
               Esta Política explica como o {COMPANY.nomeFantasia} trata dados pessoais, conforme a Lei Geral de
               Proteção de Dados Pessoais (Lei nº 13.709/2018, “LGPD”): quais dados, de onde vêm, para que usamos, com
