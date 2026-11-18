@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { SITE, TRUST_LINE } from "@/lib/site";
 import BrowserFrame from "@/components/BrowserFrame";
 
-// Topo da home: assinatura, o que o Numin faz e o print real do dashboard,
+// Topo da home: o que o Numin é, o que faz e o print real do dashboard,
 // com o menu do sistema. Sem animação de entrada: título e print são o maior
 // conteúdo da primeira tela e precisam aparecer de cara. O print fica dentro
 // da altura do azul, sem descer sobre a seção seguinte.
@@ -12,12 +12,12 @@ export default function Hero() {
     <section id="top" className="bg-brand-hero relative z-10 overflow-x-clip">
       <div className="container-x relative grid gap-12 pb-16 pt-36 md:pb-24 md:pt-44 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-14">
         <div>
-          <h1 className="text-[44px] font-bold leading-[1.02] text-white sm:text-[56px] lg:text-[68px]">
-            {SITE.signature}
+          <h1 className="text-[38px] font-bold leading-[1.05] text-white sm:text-[48px] lg:text-[58px]">
+            Sistema de gestão financeira para empresas de serviços.
           </h1>
           <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-white md:text-[19px]">
-            O Numin é o sistema de gestão financeira para empresas de serviços: contas a pagar e a receber, cartão
-            de crédito, conciliação bancária, fluxo de caixa e DRE num só lugar.
+            Contas a pagar e a receber, cartão, conciliação bancária, fluxo de caixa e DRE num só sistema. Você sabe
+            quanto tem, quanto vai entrar e se o mês deu lucro.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a href={SITE.signupUrl} className="btn btn-white btn-lg justify-center">
