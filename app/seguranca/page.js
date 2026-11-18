@@ -49,7 +49,7 @@ const SECTIONS = [
       { icon: ScrollText, title: "Auditoria com antes e depois", desc: "Pagamentos, faturas, conciliação, contas e lançamentos ficam registrados com quem fez, quando e o valor de antes e o de depois." },
       { icon: Building2, title: "Empresas isoladas", desc: "Os dados de cada organização ficam separados dos de qualquer outra, também nas contas dos relatórios." },
       { icon: Lock, title: "HTTPS em tudo", desc: "Todo o tráfego entre você e o Numin é criptografado por TLS, e o navegador é instruído a nunca usar conexão sem criptografia." },
-      { icon: Paperclip, title: "Anexos só da sua empresa", desc: "Notas e comprovantes são entregues só a quem está logado na empresa dona do arquivo." },
+      { icon: Paperclip, title: "Anexos só da sua empresa", desc: "O link de cada nota ou comprovante só é gerado para quem está logado na empresa dona do arquivo." },
       { icon: FileCheck, title: "Arquivos verificados", desc: "O tipo real de cada arquivo enviado é conferido antes de ser aceito: PDF, JPG, PNG ou WebP." },
     ],
   },
@@ -60,7 +60,7 @@ const SECTIONS = [
     items: [
       { icon: Landmark, title: "Sem senha do banco", desc: "O Numin nunca pede a senha do internet banking, em nenhum momento." },
       { icon: Plug, title: "API oficial", desc: "Inter, Sicoob e Banco do Brasil, com as credenciais e o certificado digital da própria empresa." },
-      { icon: LockKeyhole, title: "Credenciais cifradas", desc: "As credenciais da integração ficam cifradas, com a chave guardada separada delas." },
+      { icon: LockKeyhole, title: "Credenciais cifradas", desc: "A chave secreta, o certificado e a chave privada da integração ficam cifrados, com a chave de cifra guardada separada deles." },
       { icon: FileUp, title: "OFX para os demais", desc: "Com outros bancos, o extrato entra por arquivo, sem conexão nenhuma com a sua conta." },
     ],
   },

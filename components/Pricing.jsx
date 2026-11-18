@@ -56,13 +56,13 @@ export default function Pricing() {
               {isFounder ? (
                 <>
                   <div className="mt-3 flex items-baseline gap-2">
-                    <span className="text-3xl font-extrabold text-ink">Grátis</span>
+                    <span className="text-3xl font-bold text-ink">Grátis</span>
                     <span className="tabnum text-sm text-muted">até {FOUNDER_OFFER.freeUntil}</span>
                   </div>
                   <div className="mt-3 rounded-card border border-brand-100 bg-brand-50 px-4 py-3">
                     <p className="text-xs font-medium text-brand-700">A partir de {FOUNDER_OFFER.paidFrom}</p>
                     <p className="mt-0.5 flex flex-wrap items-baseline gap-x-2">
-                      <span className="tabnum text-xl font-extrabold text-ink">
+                      <span className="tabnum text-xl font-bold text-ink">
                         {FOUNDER_OFFER.price}
                         <span className="text-sm font-semibold text-muted">{FOUNDER_OFFER.period}</span>
                       </span>
@@ -74,7 +74,7 @@ export default function Pricing() {
               ) : (
                 <>
                   <div className="mt-3 flex items-baseline gap-1">
-                    <span className="tabnum text-3xl font-extrabold text-ink">{annual ? p.priceAnnual : p.price}</span>
+                    <span className="tabnum text-3xl font-bold text-ink">{annual ? p.priceAnnual : p.price}</span>
                     <span className="text-sm text-muted">{p.period}</span>
                   </div>
                   <p className="mt-1 text-xs text-muted">{annual ? "por mês, cobrado anualmente" : "cobrança mensal"}</p>

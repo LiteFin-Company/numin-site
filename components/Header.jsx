@@ -27,6 +27,7 @@ export default function Header() {
 
   return (
     <header
+      data-fundo={solid ? undefined : "escuro"}
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
         solid ? "border-b border-slate-100 bg-white/90 backdrop-blur" : "border-b border-transparent bg-transparent"
       }`}
@@ -52,7 +53,7 @@ export default function Header() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={solid ? "/numin-horizontal-cor.svg" : "/numin-horizontal-branco.svg"}
-            alt="Numin — Controle financeiro inteligente"
+            alt="Numin"
             className="h-9 w-auto"
           />
         </Link>
@@ -81,7 +82,7 @@ export default function Header() {
             Entrar
           </a>
           <a href={SITE.signupUrl} className={`btn ${solid ? "btn-primary" : "btn-white"}`}>
-            Começar agora
+            Começar grátis
           </a>
         </div>
 
@@ -112,7 +113,7 @@ export default function Header() {
             ))}
             <div className="mt-3 flex flex-col gap-2">
               <a href={SITE.appUrl} className="btn btn-ghost">Entrar</a>
-              <a href={SITE.signupUrl} className="btn btn-primary">Começar agora</a>
+              <a href={SITE.signupUrl} className="btn btn-primary">Começar grátis</a>
             </div>
           </nav>
         </div>

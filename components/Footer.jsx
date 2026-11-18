@@ -35,7 +35,7 @@ export default function Footer() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/numin-horizontal-branco.svg" alt="Numin" className="h-11 w-auto" />
           <p className="mt-4 max-w-xs font-display text-base font-semibold text-white">
-            {SITE.tagline}
+            {SITE.signature}
           </p>
           <p className="mt-2 max-w-xs text-sm leading-relaxed text-white/85">
             Todo o financeiro da sua empresa em um só lugar.

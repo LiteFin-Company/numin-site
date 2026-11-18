@@ -13,7 +13,7 @@ export const NOVIDADES = [
   },
   {
     date: "2026-11-17",
-    title: "Fatura do cartão em vermelho só quando vence",
+    title: "Fatura do cartão em vermelho só quando vencida",
     what: "O total e o restante da fatura aparecem em cor neutra. O vermelho fica para a fatura vencida e não paga.",
     why: "O alerta volta a chamar atenção para o que pede ação.",
     source: "decisão 0026; frontend #89",
@@ -27,8 +27,8 @@ export const NOVIDADES = [
   },
   {
     date: "2026-11-17",
-    title: "Correções em pagamentos de contas inativas",
-    what: "Pagamento numa conta que ficou inativa volta a aceitar correção de data, forma e observação. Tirar a conta de um lançamento só é recusado quando há pagamento nela.",
+    title: "Corrigir pagamento antigo sem reativar a conta",
+    what: "Um pagamento feito por uma conta que você desativou pode ter a data, a forma e a observação corrigidas. E dá para tirar a conta de um lançamento pago por outra conta.",
     why: "Arrumar o histórico não exige reativar conta nem apagar pagamento.",
     source: "decisão 0025; backend #127",
   },
@@ -76,9 +76,9 @@ export const NOVIDADES = [
   },
   {
     date: "2026-11-14",
-    title: "Aviso de orçamento pelo realizado da DRE",
-    what: "O aviso de categoria acima do previsto no dashboard compara o previsto com o mesmo realizado da DRE.",
-    why: "O estorno de uma compra abate a categoria certa, e o aviso bate com o relatório.",
+    title: "Aviso de gasto acima do previsto mais certeiro",
+    what: "O aviso do dashboard de categoria que passou do previsto usa o mesmo gasto que aparece na DRE, com a compra no cartão inteira no mês dela.",
+    why: "Um estorno abate a categoria da compra estornada, e o aviso bate com o relatório.",
     source: "decisão 0022; backend #125",
   },
   {
@@ -133,7 +133,7 @@ export const NOVIDADES = [
   {
     date: "2026-11-11",
     title: "Em que fatura a compra vai cair",
-    what: "Ao lançar uma compra no cartão, o Numin mostra a fatura e o vencimento em que ela vai entrar e avisa se essa fatura já fechou ou foi paga.",
+    what: "Ao lançar uma compra no cartão, o Numin mostra a fatura e o vencimento em que ela vai entrar e avisa se essa fatura já foi paga.",
     why: "Sem surpresa no vencimento.",
     source: "backend #105, frontend #77",
   },

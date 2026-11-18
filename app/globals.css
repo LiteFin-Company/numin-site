@@ -186,6 +186,12 @@ textarea:focus-visible,
   outline-offset: 2px;
   border-radius: 6px;
 }
+/* Sobre cobalto e marinho o contorno cobalto some: lá ele é branco. */
+.bg-brand-hero :focus-visible,
+.bg-ink :focus-visible,
+[data-fundo="escuro"] :focus-visible {
+  outline-color: #fff;
+}
 
 /* Corpo dos posts do blog (HTML gerado do Markdown em content/posts).
    Mesma escala dos artigos escritos em JSX (ex.: app/dre/page.js). */

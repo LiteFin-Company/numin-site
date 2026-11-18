@@ -13,7 +13,7 @@ export default function Hero() {
       <div className="container-x relative grid gap-12 pt-36 md:pt-44 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-14">
         <div className="lg:pb-28">
           <h1 className="text-[44px] font-bold leading-[1.02] text-white sm:text-[56px] lg:text-[68px]">
-            {SITE.tagline}
+            {SITE.signature}
           </h1>
           <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-white md:text-[19px]">
             Contas a pagar e a receber, cartão de crédito, conciliação bancária, fluxo de caixa e DRE da sua empresa de

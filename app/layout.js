@@ -36,13 +36,13 @@ export const metadata = {
     siteName: "Numin",
     title: "Numin — Controle financeiro para sua empresa",
     description:
-      "Seus números, inteligentes. Contas, cartão, conciliação bancária, fluxo de caixa e relatórios — do lançamento à decisão.",
+      "Contas a pagar e a receber, cartão de crédito, conciliação bancária, fluxo de caixa e DRE da sua empresa num só lugar.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Numin — Controle financeiro para sua empresa",
     description:
-      "Seus números, inteligentes. Contas, cartão, conciliação, fluxo de caixa e relatórios.",
+      "Contas a pagar e a receber, cartão de crédito, conciliação bancária, fluxo de caixa e DRE da sua empresa num só lugar.",
   },
 };
 
