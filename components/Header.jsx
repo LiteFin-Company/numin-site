@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
-import { NAV, SITE } from "@/lib/site";
+import { ArrowRight, Menu, X } from "lucide-react";
+import { NAV, SITE, FOUNDER_OFFER } from "@/lib/site";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -21,6 +21,9 @@ export default function Header() {
   }, []);
 
   const solid = !onHome || scrolled || open;
+  // Faixa dos Parceiros: só na home, no topo da página. Some ao rolar e com o
+  // menu do celular aberto; não fica presa na tela.
+  const showStrip = onHome && !scrolled && !open;
 
   return (
     <header
@@ -28,6 +31,22 @@ export default function Header() {
         solid ? "border-b border-slate-100 bg-white/90 backdrop-blur" : "border-b border-transparent bg-transparent"
       }`}
     >
+      {showStrip && (
+        <div className="bg-ink text-white">
+          <p className="container-x flex min-h-9 items-center justify-center gap-x-2 py-2 text-center text-[13px] leading-snug">
+            <span>
+              <strong className="font-semibold">{FOUNDER_OFFER.name}:</strong>{" "}
+              <span className="hidden sm:inline">
+                {FOUNDER_OFFER.slots} empresas com implantação feita por nós e preço travado.
+              </span>
+              <span className="sm:hidden">{FOUNDER_OFFER.slots} vagas com preço travado.</span>
+            </span>
+            <a href="#parceiros" className="inline-flex shrink-0 items-center gap-1 font-semibold text-ciano underline-offset-4 hover:underline">
+              Saiba mais <ArrowRight size={14} aria-hidden />
+            </a>
+          </p>
+        </div>
+      )}
       <div className="container-x flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center" aria-label="Numin — início">
           {/* eslint-disable-next-line @next/next/no-img-element */}

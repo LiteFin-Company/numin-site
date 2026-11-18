@@ -1,14 +1,17 @@
 import Image from "next/image";
-import FeatureTabs from "@/components/FeatureTabs";
-import FeatureList from "@/components/FeatureList";
-import FloatCard from "@/components/FloatCard";
-import { ArrowRight, Check, Landmark, Lock, RefreshCcw, Scale } from "lucide-react";
+import { ArrowRight, Check, Handshake, MessagesSquare, Settings2, LockKeyhole } from "lucide-react";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
 import Pricing from "@/components/Pricing";
 import Faq from "@/components/Faq";
-import { SITE, SECURITY, PLANS, FAQ, BANK_INTEGRATIONS, OFX_FALLBACK } from "@/lib/site";
+import BrowserFrame from "@/components/BrowserFrame";
+import FeatureVideo from "@/components/FeatureVideo";
+import {
+  SITE, SECURITY, PLANS, FAQ, BANK_INTEGRATIONS, OFX_FALLBACK, PRODUCT_BLOCKS, FEATURES, FOUNDER_OFFER, FOUNDERS,
+  TRUST_LINE,
+} from "@/lib/site";
+import { COMPANY } from "@/lib/empresa";
 
 export const metadata = {
   alternates: { canonical: "/" },
@@ -50,6 +53,40 @@ const JSON_LD = {
   ],
 };
 
+const STEPS = [
+  {
+    title: "Crie a conta",
+    desc: "Sem cartão. A empresa já nasce com um plano de contas pronto, que você ajusta quando quiser.",
+  },
+  {
+    title: "Traga o extrato",
+    desc: "Conecte Inter, Sicoob ou Banco do Brasil pela API oficial, ou importe o OFX de qualquer outro banco.",
+  },
+  {
+    title: "Feche o primeiro mês",
+    desc: "Concilie o extrato com o que foi lançado e veja o fluxo de caixa e a DRE do mês.",
+  },
+];
+
+const PARTNER_GAINS = [
+  { icon: Settings2, title: FOUNDER_OFFER.gains[0].title, desc: FOUNDER_OFFER.gains[0].desc },
+  { icon: MessagesSquare, title: FOUNDER_OFFER.gains[1].title, desc: FOUNDER_OFFER.gains[1].desc },
+  {
+    icon: LockKeyhole,
+    title: FOUNDER_OFFER.gains[2].title,
+    desc: `Plano ${FOUNDER_OFFER.plan} grátis até ${FOUNDER_OFFER.freeUntil} e, a partir de ${FOUNDER_OFFER.paidFrom}, ${FOUNDER_OFFER.price}${FOUNDER_OFFER.period} para sempre.`,
+  },
+];
+
+function TalkToFounders({ className = "" }) {
+  if (!SITE.meetingUrl) return null;
+  return (
+    <a href={SITE.meetingUrl} className={className}>
+      Conversar com os fundadores
+    </a>
+  );
+}
+
 export default function Home() {
   return (
     <>
@@ -60,57 +97,84 @@ export default function Home() {
 
       <Hero />
 
-      {/* Funcionalidades: lista com detalhe e print da tela */}
-      <section id="funcionalidades" className="section anchor bg-nuvem">
+      {/* Produto: quatro blocos com vídeo e, abaixo, o resto em grade compacta.
+          O pt maior abre espaço para o print do topo, que desce sobre esta seção. */}
+      <section id="funcionalidades" className="anchor bg-nuvem pb-20 pt-40 md:pb-28 md:pt-52">
         <div className="container-x">
-          <Reveal className="mx-auto max-w-2xl text-center">
+          <Reveal className="max-w-2xl">
             <span className="eyebrow">Funcionalidades</span>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-ink md:text-4xl">
-              Da rotina financeira à visão do negócio
-            </h2>
-            <p className="mt-4 text-lg text-muted">Ferramentas que ligam o dia a dia às decisões da sua empresa.</p>
+            <h2 className="mt-3 text-3xl font-bold text-ink md:text-5xl">O mês fechado sem planilha</h2>
+            <p className="mt-4 text-lg text-muted">
+              Do lançamento do dia ao resultado do mês, tudo no mesmo lugar e com os mesmos números.
+            </p>
           </Reveal>
-          <div className="mx-auto mt-12 max-w-5xl">
-            <FeatureList />
+
+          <div className="mt-16 space-y-20 md:space-y-28">
+            {PRODUCT_BLOCKS.map((b, i) => {
+              const Icon = b.icon;
+              return (
+                <Reveal key={b.label}>
+                  <div className="grid items-center gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
+                    <div className={i % 2 ? "lg:order-2" : ""}>
+                      <p className="flex items-center gap-2 text-sm font-semibold text-brand-700">
+                        <Icon size={18} aria-hidden /> {b.label}
+                      </p>
+                      <h3 className="mt-3 text-2xl font-bold tracking-tight text-ink md:text-3xl">{b.title}</h3>
+                      <p className="mt-4 leading-relaxed text-muted">{b.desc}</p>
+                      <ul className="mt-6 space-y-2.5">
+                        {b.points.map((p) => (
+                          <li key={p} className="flex items-start gap-2.5 text-ink-700">
+                            <span className="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-brand-100 text-brand-700">
+                              <Check size={11} strokeWidth={3} aria-hidden />
+                            </span>
+                            {p}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <FeatureVideo src={b.video} alt={b.alt} />
+                  </div>
+                </Reveal>
+              );
+            })}
           </div>
+
+          <Reveal className="mt-24 border-t border-slate-200 pt-12 md:mt-28">
+            <h3 className="text-xl font-bold tracking-tight text-ink">E também</h3>
+            <ul className="mt-8 grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
+              {FEATURES.map(({ icon: Icon, label, desc }) => (
+                <li key={label}>
+                  <Icon size={20} className="text-brand-600" aria-hidden />
+                  <h4 className="mt-3 font-semibold text-ink">{label}</h4>
+                  <p className="mt-1 text-sm leading-relaxed text-muted">{desc}</p>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
         </div>
       </section>
 
-      {/* Destaques: abas com texto e vídeo de cada funcionalidade */}
-      <section id="destaques" className="section anchor">
-        <div className="container-x">
-          <Reveal className="mx-auto max-w-2xl text-center">
-            <span className="eyebrow">Na prática</span>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-ink md:text-4xl">Veja o Numin funcionando</h2>
-          </Reveal>
-          <div className="mt-12">
-            <FeatureTabs />
-          </div>
-        </div>
-      </section>
-
-      {/* Integrações bancárias: caixas empilhadas à esquerda, foto à direita */}
-      <section id="integracoes" className="section anchor bg-nuvem">
-        <div className="container-x grid max-w-6xl items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
+      {/* Integrações bancárias: caixas à esquerda, print da conciliação à direita */}
+      <section id="integracoes" className="section anchor">
+        <div className="container-x grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <Reveal>
             <span className="eyebrow">Integrações bancárias</span>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-ink md:text-4xl">O extrato chega sozinho para conciliar</h2>
+            <h2 className="mt-3 text-3xl font-bold text-ink md:text-4xl">O extrato chega sozinho para conciliar</h2>
             <p className="mt-4 text-lg text-muted">Conecte o banco da empresa e concilie sem baixar arquivo.</p>
 
             <div className="mt-8 space-y-4">
-              <div className="flex items-center gap-5 rounded-2xl bg-white p-5 shadow-[0_1px_2px_rgba(7,16,31,0.06)]">
+              <div className="flex items-center gap-5 rounded-card border border-slate-200 bg-white p-5">
                 <div className="flex shrink-0 gap-1.5">
-                  {BANK_INTEGRATIONS.map((b, i) => (
-                    <div key={b.name} className="floaty" style={{ animationDelay: `${i * 1.1}s` }}>
-                      <Image
-                        src={b.logo}
-                        alt={`Logo ${b.name}`}
-                        width={40}
-                        height={40}
-                        unoptimized
-                        className="h-10 w-10 rounded-xl ring-1 ring-slate-200 shadow-[0_8px_18px_-10px_rgba(7,16,31,0.5)]"
-                      />
-                    </div>
+                  {BANK_INTEGRATIONS.map((b) => (
+                    <Image
+                      key={b.name}
+                      src={b.logo}
+                      alt={`Logo ${b.name}`}
+                      width={40}
+                      height={40}
+                      unoptimized
+                      className="h-10 w-10 rounded-xl ring-1 ring-slate-200"
+                    />
                   ))}
                 </div>
                 <div>
@@ -118,9 +182,9 @@ export default function Home() {
                   <p className="mt-0.5 text-sm text-muted">Extrato automático pela API oficial do banco.</p>
                 </div>
               </div>
-              <div className="flex items-center gap-5 rounded-2xl bg-white p-5 shadow-[0_1px_2px_rgba(7,16,31,0.06)]">
-                <div className="floaty flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-600 ring-1 ring-brand-100" style={{ animationDelay: "0.5s" }}>
-                  <OFX_FALLBACK.icon size={20} />
+              <div className="flex items-center gap-5 rounded-card border border-slate-200 bg-white p-5">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-50 text-brand-600 ring-1 ring-brand-100">
+                  <OFX_FALLBACK.icon size={20} aria-hidden />
                 </div>
                 <div>
                   <h3 className="font-semibold text-ink">Qualquer outro banco</h3>
@@ -133,129 +197,190 @@ export default function Home() {
             </p>
           </Reveal>
           <Reveal>
-            <div className="relative mx-auto max-w-md lg:max-w-none">
-            <Image
-              src="/integracoes-foto.webp"
-              alt="Mulher sorrindo ao celular, trabalhando no notebook perto da janela"
-              width={1200}
-              height={1500}
-              sizes="(min-width: 1024px) 440px, (min-width: 640px) 448px, 100vw"
-              className="aspect-[4/5] w-full rounded-3xl object-cover shadow-[0_30px_60px_-30px_rgba(7,16,31,0.45)]"
-            />
-            <FloatCard icon={RefreshCcw} title="Extrato sincronizado" className="flex -right-3 top-10 sm:-right-6" delay="0s" onLight />
-            <FloatCard icon={Landmark} title="Sem a senha do seu banco" className="flex -left-3 bottom-12 sm:-left-6" delay="1.4s" onLight />
-            </div>
+            <BrowserFrame className="shadow-float">
+              <Image
+                src="/funcionalidades/conciliacao.webp"
+                alt="Tela de conciliação do Numin com as linhas do extrato e as sugestões de correspondência para confirmar"
+                width={1600}
+                height={1162}
+                sizes="(min-width: 1024px) 640px, 100vw"
+                className="block h-auto w-full"
+              />
+            </BrowserFrame>
           </Reveal>
         </div>
       </section>
 
-      {/* Conexão via MCP (em breve) */}
-      <section id="mcp" className="section anchor">
-        <div className="container-x grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      {/* Segurança: fatos do produto, conferidos no código do app (lib/site.js, SECURITY) */}
+      <section id="seguranca" className="section anchor bg-nuvem">
+        <div className="container-x grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
+          <Reveal className="lg:sticky lg:top-28 lg:self-start">
+            <span className="eyebrow">Segurança</span>
+            <h2 className="mt-3 text-3xl font-bold text-ink md:text-4xl">
+              Cada centavo registrado. Cada mudança, com quem fez e quando.
+            </h2>
+            <p className="mt-4 text-lg text-muted">O que o Numin faz com o dinheiro e os dados da sua empresa, sem rodeios.</p>
+            <a href="/seguranca" className="btn btn-ghost mt-8">
+              Ver tudo sobre segurança <ArrowRight size={16} aria-hidden />
+            </a>
+          </Reveal>
           <Reveal>
-            <div className="flex flex-wrap items-center gap-3">
-              <span className="eyebrow">Conexão via MCP</span>
-              <span className="rounded-full bg-brand-50 px-2.5 py-0.5 text-xs font-semibold text-brand-700">Em breve</span>
-            </div>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-ink md:text-4xl">Pergunte ao seu financeiro</h2>
-            <p className="mt-4 text-lg leading-relaxed text-muted">
-              Conecte o Numin ao Claude, ao ChatGPT ou a outro assistente de IA compatível com MCP e consulte seus números
-              conversando.
-            </p>
-            <ul className="mt-6 space-y-3 text-ink-700">
-              {["Compatível com Claude, ChatGPT e outros assistentes com MCP", "Nos planos Profissional e Avançado"].map((item) => (
-                <li key={item} className="flex items-center gap-3">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-100 text-brand-700">
-                    <Check size={13} strokeWidth={3} />
+            <ul className="divide-y divide-slate-200 border-y border-slate-200">
+              {SECURITY.map(({ icon: Icon, title, short, href }) => (
+                <li key={title} className="flex gap-4 py-5">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-card bg-white text-brand-600 ring-1 ring-slate-200">
+                    <Icon size={19} aria-hidden />
                   </span>
-                  {item}
+                  <div>
+                    <h3 className="font-semibold text-ink">{title}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-muted">
+                      {short}
+                      {href && (
+                        <>
+                          {" "}
+                          <a href={href} className="font-semibold text-brand-600 hover:text-brand-700">
+                            Ler a política
+                          </a>
+                        </>
+                      )}
+                    </p>
+                  </div>
                 </li>
               ))}
             </ul>
           </Reveal>
+        </div>
+      </section>
+
+      {/* Como começar: três passos, sem prometer tempo que não medimos */}
+      <section id="comecar" className="section anchor">
+        <div className="container-x">
+          <Reveal className="max-w-2xl">
+            <span className="eyebrow">Como começar</span>
+            <h2 className="mt-3 text-3xl font-bold text-ink md:text-4xl">Do cadastro ao primeiro mês fechado</h2>
+          </Reveal>
           <Reveal>
-            {/* Conversa de exemplo (valores fictícios) */}
-            <div aria-label="Exemplo de conversa com um assistente conectado ao Numin" className="rounded-3xl border border-slate-200 bg-nuvem p-6 md:p-8">
-              <div className="flex items-center gap-2 text-xs font-medium text-muted">
-                <Image src="/numin-simbolo-cor.svg" alt="" width={18} height={18} unoptimized className="h-[18px] w-[18px]" />
-                Assistente conectado ao Numin
-              </div>
-              <div className="mt-6 flex justify-end">
-                <p className="max-w-[80%] rounded-2xl rounded-br-md bg-brand-600 px-4 py-3 text-sm text-white">
-                  Como foi o resultado de setembro?
-                </p>
-              </div>
-              <div className="mt-4 max-w-[90%] rounded-2xl rounded-bl-md bg-white px-4 py-3 text-sm leading-relaxed text-ink-700 shadow-[0_1px_2px_rgba(7,16,31,0.08)]">
-                Em setembro, a receita foi de <strong className="text-ink">R$ 31.300</strong> e as despesas somaram{" "}
-                <strong className="text-ink">R$ 21.467</strong>. O resultado ficou em{" "}
-                <strong className="text-positive">R$ 9.833</strong>, com margem de 31%.
-              </div>
-              <div className="mt-4 flex justify-end">
-                <p className="max-w-[80%] rounded-2xl rounded-br-md bg-brand-600 px-4 py-3 text-sm text-white">
-                  E o que vence esta semana?
-                </p>
-              </div>
-              <div className="mt-4 flex w-fit items-center gap-1 rounded-2xl rounded-bl-md bg-white px-4 py-3.5 shadow-[0_1px_2px_rgba(7,16,31,0.08)]">
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand-300" />
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand-300 [animation-delay:200ms]" />
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand-300 [animation-delay:400ms]" />
-              </div>
+            <ol className="mt-12 grid gap-10 md:grid-cols-3 md:gap-8">
+              {STEPS.map((step, i) => (
+                <li key={step.title} className="border-t-2 border-brand-600 pt-6">
+                  <span className="tabnum text-sm font-bold text-brand-700">Passo {i + 1}</span>
+                  <h3 className="mt-2 text-xl font-bold tracking-tight text-ink">{step.title}</h3>
+                  <p className="mt-2 leading-relaxed text-muted">{step.desc}</p>
+                </li>
+              ))}
+            </ol>
+          </Reveal>
+          <Reveal className="mt-12 flex flex-col items-start gap-3">
+            <a href={SITE.signupUrl} className="btn btn-primary btn-lg">
+              Começar grátis <ArrowRight size={18} aria-hidden />
+            </a>
+            <p className="text-sm text-muted">{TRUST_LINE}</p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Parceiros Numin: dez vagas reais */}
+      <section id="parceiros" className="anchor bg-ink py-20 text-white md:py-28">
+        <div className="container-x grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+          <Reveal>
+            <p className="flex items-center gap-2 text-sm font-semibold text-ciano">
+              <Handshake size={18} aria-hidden /> {FOUNDER_OFFER.name}
+            </p>
+            <h2 className="mt-3 text-3xl font-bold text-white md:text-5xl">
+              <span className="tabnum">{FOUNDER_OFFER.slots}</span> empresas para construir o Numin com a gente
+            </h2>
+            <p className="mt-5 text-lg leading-relaxed text-white/85">
+              Para quem quer organizar o financeiro desde já e ajudar a decidir o que o Numin faz a seguir.
+            </p>
+            <div className="mt-8 rounded-panel border border-white/15 p-6">
+              <p className="text-sm text-white/85">Plano {FOUNDER_OFFER.plan}</p>
+              <p className="mt-1 text-2xl font-bold text-white">
+                Grátis até <span className="tabnum">{FOUNDER_OFFER.freeUntil}</span>
+              </p>
+              <p className="mt-3 flex flex-wrap items-baseline gap-x-2 text-white/85">
+                <span>A partir de {FOUNDER_OFFER.paidFrom},</span>
+                <span className="tabnum text-xl font-bold text-white">
+                  {FOUNDER_OFFER.price}
+                  {FOUNDER_OFFER.period}
+                </span>
+                <span>para sempre</span>
+                <span className="tabnum text-sm text-white/70 line-through">
+                  {FOUNDER_OFFER.original}
+                  {FOUNDER_OFFER.period}
+                </span>
+              </p>
+            </div>
+          </Reveal>
+          <Reveal>
+            <h3 className="text-lg font-semibold text-white">O que o parceiro ganha</h3>
+            <ul className="mt-6 space-y-7">
+              {PARTNER_GAINS.map(({ icon: Icon, title, desc }) => (
+                <li key={title} className="flex gap-4">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-card bg-white/10 text-ciano">
+                    <Icon size={19} aria-hidden />
+                  </span>
+                  <div>
+                    <h4 className="font-semibold text-white">{title}</h4>
+                    <p className="mt-1 leading-relaxed text-white/85">{desc}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <h3 className="mt-10 text-lg font-semibold text-white">O que pedimos</h3>
+            <p className="mt-3 leading-relaxed text-white/85">{FOUNDER_OFFER.ask}</p>
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <a href={SITE.signupUrl} className="btn btn-white btn-lg justify-center">
+                {FOUNDER_OFFER.cta} <ArrowRight size={18} aria-hidden />
+              </a>
+              <TalkToFounders className="btn btn-lg justify-center border border-white/30 text-white hover:bg-white/10" />
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* Segurança: foto de um lado, itens do outro */}
-      <section id="seguranca" className="section anchor bg-nuvem">
-        <div className="container-x grid max-w-6xl items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
-          <Reveal>
-            <div className="relative mx-auto max-w-md lg:max-w-none">
-              <Image
-                src="/seguranca-pessoa-3.webp"
-                alt="Homem sorrindo, sentado diante do notebook numa conversa de trabalho"
-                width={1200}
-                height={1500}
-                sizes="(min-width: 1024px) 480px, (min-width: 640px) 448px, 100vw"
-                className="aspect-[4/5] w-full rounded-3xl object-cover shadow-[0_30px_60px_-30px_rgba(7,16,31,0.45)]"
-              />
-              <FloatCard icon={Lock} title="Conexão criptografada" className="flex -left-3 top-10 sm:-left-6" delay="0s" onLight />
-              <FloatCard icon={Scale} title="Dados tratados conforme a LGPD" className="flex -right-3 bottom-12 sm:-right-6" delay="1.4s" onLight />
-            </div>
-          </Reveal>
-          <Reveal>
-            <span className="eyebrow">Segurança</span>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-ink md:text-4xl">Seu financeiro protegido</h2>
-            <p className="mt-4 text-lg text-muted">Do jeito que dado financeiro exige.</p>
-            <ul className="mt-8 grid gap-x-8 gap-y-6 sm:grid-cols-2">
-              {SECURITY.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <li key={item.title} className="flex gap-3">
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-brand-600 ring-1 ring-slate-200">
-                      <Icon size={19} />
-                    </span>
+      {/* Quem faz o Numin: só aparece com FOUNDERS preenchido em lib/site.js */}
+      {FOUNDERS.length > 0 && (
+        <section id="quem-faz" className="section anchor">
+          <div className="container-x">
+            <Reveal className="max-w-2xl">
+              <span className="eyebrow">Quem faz o Numin</span>
+              <h2 className="mt-3 text-3xl font-bold text-ink md:text-4xl">Gente que você pode chamar pelo nome</h2>
+            </Reveal>
+            <div className="mt-12 grid gap-10 md:grid-cols-2">
+              {FOUNDERS.map((f) => (
+                <Reveal key={f.name}>
+                  <div className="flex flex-col gap-6 sm:flex-row">
+                    <Image
+                      src={f.photo}
+                      alt={`Foto de ${f.name}`}
+                      width={160}
+                      height={160}
+                      className="h-32 w-32 shrink-0 rounded-panel object-cover"
+                    />
                     <div>
-                      <h3 className="font-semibold text-ink">{item.title}</h3>
-                      <p className="mt-1 text-sm leading-relaxed text-muted">{item.short}</p>
+                      <h3 className="text-xl font-bold tracking-tight text-ink">{f.name}</h3>
+                      <p className="mt-1 text-sm font-semibold text-brand-700">{f.role}</p>
+                      <p className="mt-3 leading-relaxed text-muted">{f.bio}</p>
                     </div>
-                  </li>
-                );
-              })}
-            </ul>
-            <a href="/seguranca" className="btn btn-ghost mt-10">
-              Ver tudo sobre segurança <ArrowRight size={16} />
-            </a>
-          </Reveal>
-        </div>
-      </section>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+            <p className="mt-12 text-sm text-muted">
+              O Numin é feito pela {COMPANY.razaoSocial}, <span className="tabnum">CNPJ {COMPANY.cnpj}</span>, em{" "}
+              {COMPANY.cidadeUf.split(",")[0]}.
+            </p>
+          </div>
+        </section>
+      )}
 
       {/* Preços */}
-      <section id="precos" className="section anchor">
+      <section id="precos" className={`section anchor ${FOUNDERS.length > 0 ? "bg-nuvem" : ""}`}>
         <div className="container-x">
-          <Reveal className="mx-auto max-w-4xl text-center">
+          <Reveal className="mx-auto max-w-3xl text-center">
             <span className="eyebrow">Planos</span>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-ink md:text-4xl">
-              Um plano para cada momento da empresa
+            <h2 className="mt-3 text-3xl font-bold text-ink md:text-4xl">
+              Preço aberto. Teste sem cartão. Cancele quando quiser.
             </h2>
             <p className="mt-4 text-lg text-muted">
               Controle financeiro completo em todos os planos. O que muda é a equipe e as conexões.
@@ -278,20 +403,22 @@ export default function Home() {
         <section>
           <div className="container-x py-16 text-center md:py-20">
             <Reveal>
-              <h2 className="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white md:text-4xl">
-                Assuma o controle do financeiro da sua empresa
+              <h2 className="mx-auto max-w-2xl text-3xl font-bold text-white md:text-4xl">
+                Feche o próximo mês no Numin, com a gente ao lado.
               </h2>
-              <p className="mx-auto mt-4 max-w-xl text-lg text-white/85">
-                Comece hoje e tenha suas contas, cartão e caixa organizados em um só lugar.
-              </p>
               <div className="mt-8 flex flex-wrap justify-center gap-3">
                 <a href={SITE.signupUrl} className="btn btn-white btn-lg">
-                  Começar grátis <ArrowRight size={18} />
+                  Começar grátis <ArrowRight size={18} aria-hidden />
                 </a>
-                <a href="#precos" className="btn btn-lg border border-white/20 text-white hover:bg-white/10">
-                  Ver planos
-                </a>
+                {SITE.meetingUrl ? (
+                  <TalkToFounders className="btn btn-lg border border-white/30 text-white hover:bg-white/10" />
+                ) : (
+                  <a href="#precos" className="btn btn-lg border border-white/30 text-white hover:bg-white/10">
+                    Ver planos
+                  </a>
+                )}
               </div>
+              <p className="mt-5 text-sm text-white/85">{TRUST_LINE}</p>
             </Reveal>
           </div>
         </section>
