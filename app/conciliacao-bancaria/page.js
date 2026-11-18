@@ -143,7 +143,7 @@ export default function ConciliacaoBancariaPage() {
           </li>
           <li>
             <strong className="text-ink">Bata cada transação com um lançamento.</strong> Compare
-            valor, data e favorecido. Um recebimento de R$ 1.500 de um cliente deve corresponder ao
+            valor, data e favorecido. Um recebimento de <span className="tabnum">R$ 1.500</span> de um cliente deve corresponder ao
             título a receber desse cliente, não a qualquer outro de mesmo valor.
           </li>
           <li>
@@ -225,7 +225,7 @@ export default function ConciliacaoBancariaPage() {
         </p>
 
         <figure className="mt-10">
-          <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_30px_60px_-30px_rgba(7,16,31,0.35)]">
+          <div className="overflow-hidden rounded-panel border border-slate-200 bg-white shadow-float">
             <div className="flex items-center gap-1.5 border-b border-slate-100 bg-slate-50 px-3 py-2.5">
               <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
               <span className="h-2.5 w-2.5 rounded-full bg-slate-300" />
