@@ -36,6 +36,17 @@
   --color-warning: #ff8b00;
   --color-negative: #de350b;
 
+  /* Profundidade em dois níveis: "raised" para cartões e itens sobre o fundo,
+     "float" para prints de tela e o que precisa sair do plano. Use
+     shadow-raised e shadow-float; não escreva sombras à mão. */
+  --shadow-raised: 0 1px 3px rgba(7, 16, 31, 0.10);
+  --shadow-float: 0 30px 60px -30px rgba(7, 16, 31, 0.45);
+
+  /* Raio em dois níveis: rounded-card (cartões, ícones, campos) e
+     rounded-panel (painéis e molduras de print). Botões e selos ficam fora. */
+  --radius-card: 1rem;
+  --radius-panel: 1.5rem;
+
   --font-sans: var(--font-archivo);
   --font-display: var(--font-archivo);
 }
@@ -94,8 +105,8 @@ html { scroll-behavior: smooth; }
     line-height: 1;
     cursor: pointer;
   }
-  .btn-primary { background: var(--color-brand-600); color: #fff; box-shadow: 0 1px 2px rgba(7,16,31,0.10); }
-  .btn-primary:hover { background: var(--color-brand-700); box-shadow: 0 8px 24px rgba(0,64,240,0.26); }
+  .btn-primary { background: var(--color-brand-600); color: #fff; box-shadow: var(--shadow-raised); }
+  .btn-primary:hover { background: var(--color-brand-700); }
   .btn-ghost { background: #fff; color: var(--color-ink); border: 1px solid #dfe1e6; }
   .btn-ghost:hover { border-color: var(--color-brand-400); color: var(--color-brand-700); }
   .btn-white { background: #fff; color: var(--color-brand-700); }
@@ -113,14 +124,13 @@ html { scroll-behavior: smooth; }
   .card {
     background: #fff;
     border: 1px solid #ebecf0;
-    border-radius: 1.125rem;
+    border-radius: var(--radius-card);
     padding: 1.5rem;
     transition: box-shadow 0.18s ease, transform 0.18s ease, border-color 0.18s ease;
   }
   .card-hover:hover {
-    box-shadow: 0 12px 32px -12px rgba(0,64,240,0.25);
+    box-shadow: var(--shadow-raised);
     border-color: var(--color-brand-200);
-    transform: translateY(-2px);
   }
 
   .section { padding-block: 5rem; }
@@ -130,13 +140,6 @@ html { scroll-behavior: smooth; }
      o branco dá 7,0:1 no ponto mais claro, e o branco a 85% fica acima de 4,5:1. */
   .bg-brand-hero { background: linear-gradient(160deg, var(--color-brand-600) 0%, var(--color-brand-700) 55%, var(--color-brand-800) 100%); }
 }
-
-/* Floating hero cards */
-@keyframes floaty {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-.floaty { animation: floaty 5.5s ease-in-out infinite; }
 
 /* Entrada ao rolar — só CSS (scroll-driven animations), sem JavaScript.
    Onde o navegador não suporta, ou com movimento reduzido, o conteúdo
@@ -169,7 +172,7 @@ html { scroll-behavior: smooth; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .floaty { animation: none; }
+  html { scroll-behavior: auto; }
 }
 
 /* Foco visível (acessibilidade) */
