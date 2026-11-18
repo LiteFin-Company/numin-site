@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
-import { NAV, SITE } from "@/lib/site";
+import { ArrowRight, Menu, X } from "lucide-react";
+import { NAV, SITE, FOUNDER_OFFER } from "@/lib/site";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -21,20 +21,40 @@ export default function Header() {
   }, []);
 
   const solid = !onHome || scrolled || open;
+  // Faixa dos Parceiros: só na home, no topo da página. Some ao rolar e com o
+  // menu do celular aberto; não fica presa na tela.
+  const showStrip = onHome && !scrolled && !open;
 
   return (
     <header
+      data-fundo={solid ? undefined : "escuro"}
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
         solid ? "border-b border-slate-100 bg-white/90 backdrop-blur" : "border-b border-transparent bg-transparent"
       }`}
     >
+      {showStrip && (
+        <div className="bg-ink text-white">
+          <p className="container-x flex min-h-9 items-center justify-center gap-x-2 py-2 text-center text-[13px] leading-snug">
+            <span>
+              <strong className="font-semibold">{FOUNDER_OFFER.name}:</strong>{" "}
+              <span className="hidden sm:inline">
+                {FOUNDER_OFFER.slots} vagas com {FOUNDER_OFFER.freeMonths} meses grátis e depois {FOUNDER_OFFER.price}{FOUNDER_OFFER.period} para sempre.
+              </span>
+              <span className="sm:hidden">{FOUNDER_OFFER.freeMonths} meses grátis, depois {FOUNDER_OFFER.price}{FOUNDER_OFFER.period}.</span>
+            </span>
+            <a href="#parceiros" className="inline-flex shrink-0 items-center gap-1 font-semibold text-ciano underline-offset-4 hover:underline">
+              Saiba mais <ArrowRight size={14} aria-hidden />
+            </a>
+          </p>
+        </div>
+      )}
       <div className="container-x flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center" aria-label="Numin — início">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={solid ? "/numin-horizontal-cor.svg" : "/numin-horizontal-branco.svg"}
-            alt="Numin — Controle financeiro"
-            className="h-7 w-auto"
+            alt="Numin"
+            className="h-9 w-auto"
           />
         </Link>
 
@@ -62,7 +82,7 @@ export default function Header() {
             Entrar
           </a>
           <a href={SITE.signupUrl} className={`btn ${solid ? "btn-primary" : "btn-white"}`}>
-            Começar agora
+            Começar grátis
           </a>
         </div>
 
@@ -93,7 +113,7 @@ export default function Header() {
             ))}
             <div className="mt-3 flex flex-col gap-2">
               <a href={SITE.appUrl} className="btn btn-ghost">Entrar</a>
-              <a href={SITE.signupUrl} className="btn btn-primary">Começar agora</a>
+              <a href={SITE.signupUrl} className="btn btn-primary">Começar grátis</a>
             </div>
           </nav>
         </div>

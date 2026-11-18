@@ -1,5 +1,6 @@
 import { SITE, CONTENT_PAGES, LEGAL_PAGES } from "@/lib/site";
 import { getAllPosts } from "@/lib/posts";
+import { NOVIDADES } from "@/content/novidades";
 
 export default function sitemap() {
   const lastModified = new Date();
@@ -11,6 +12,7 @@ export default function sitemap() {
       .filter((p) => p.slug)
       .map((p) => ({ url: `${SITE.url}${p.href}`, lastModified: new Date(p.date), changeFrequency: "monthly", priority: 0.7 })),
     { url: `${SITE.url}/seguranca`, lastModified, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${SITE.url}/novidades`, lastModified: new Date(NOVIDADES[0].date), changeFrequency: "weekly", priority: 0.6 },
     ...LEGAL_PAGES.map((p) => ({ url: `${SITE.url}${p.href}`, lastModified, changeFrequency: "yearly", priority: 0.3 })),
   ];
 }

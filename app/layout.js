@@ -1,11 +1,11 @@
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Archivo } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import { SITE } from "@/lib/site";
 
-// Mesma fonte do app, no texto e nos títulos.
-const jakarta = Plus_Jakarta_Sans({
-  variable: "--font-jakarta",
+// Fonte do guia de marca (Archivo), do título ao texto corrido.
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
 });
@@ -19,7 +19,7 @@ export const metadata = {
     template: "%s — Numin",
   },
   description:
-    "Números que fazem sentido. Contas a pagar e receber, cartão de crédito, conciliação bancária, fluxo de caixa e relatórios (DRE) em um só lugar.",
+    "Seus números, inteligentes. Contas a pagar e receber, cartão de crédito, conciliação bancária, fluxo de caixa e relatórios (DRE) em um só lugar.",
   keywords: [
     "controle financeiro",
     "conciliação bancária",
@@ -36,24 +36,24 @@ export const metadata = {
     siteName: "Numin",
     title: "Numin — Controle financeiro para sua empresa",
     description:
-      "Números que fazem sentido. Contas, cartão, conciliação bancária, fluxo de caixa e relatórios — do lançamento à decisão.",
+      "Contas a pagar e a receber, cartão de crédito, conciliação bancária, fluxo de caixa e DRE da sua empresa num só lugar.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Numin — Controle financeiro para sua empresa",
     description:
-      "Números que fazem sentido. Contas, cartão, conciliação, fluxo de caixa e relatórios.",
+      "Contas a pagar e a receber, cartão de crédito, conciliação bancária, fluxo de caixa e DRE da sua empresa num só lugar.",
   },
 };
 
 export const viewport = {
-  // Azul primário do app (brand-600 em app/globals.css); metadata não lê CSS.
-  themeColor: "#0052CC",
+  // Cobalto (brand-600 em app/globals.css); metadata não lê CSS.
+  themeColor: "#0040F0",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="pt-BR" className={`${jakarta.variable} h-full antialiased`}>
+    <html lang="pt-BR" className={`${archivo.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-white">
         <Header />
         <main className="flex-1">{children}</main>
