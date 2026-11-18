@@ -16,7 +16,7 @@ export default function Hero() {
             Gestão financeira para empresas de serviços.
           </h1>
           <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-white md:text-[19px]">
-            Contas a pagar e a receber, cartão, conciliação bancária, fluxo de caixa e DRE num só sistema. Você sabe
+            Contas a pagar e a receber, cartão, conciliação bancária, fluxo de caixa e DRE num só <strong className="font-semibold text-ciano">sistema</strong>. Você sabe
             quanto tem, quanto vai entrar e se o mês deu lucro.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
