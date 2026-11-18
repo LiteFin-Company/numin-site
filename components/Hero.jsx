@@ -13,7 +13,7 @@ export default function Hero() {
       <div className="container-x relative grid gap-12 pb-16 pt-36 md:pb-24 md:pt-44 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-14">
         <div>
           <h1 className="text-[38px] font-bold leading-[1.05] text-white sm:text-[48px] lg:text-[58px]">
-            Sistema de gestão financeira para empresas de serviços.
+            Gestão financeira para empresas de serviços.
           </h1>
           <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-white md:text-[19px]">
             Contas a pagar e a receber, cartão, conciliação bancária, fluxo de caixa e DRE num só sistema. Você sabe
