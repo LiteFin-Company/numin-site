@@ -236,13 +236,16 @@ textarea:focus-visible,
 .post-body th { color: var(--color-ink); font-weight: 600; }
 .post-body code { background: var(--color-nuvem); padding: 0.1rem 0.35rem; border-radius: 0.35rem; font-size: 0.95em; }
 
-/* Marca-texto: a palavra continua branca e o ciano passa por baixo, na metade
-   de baixo da linha, como caneta marca-texto. Só sobre fundo escuro. */
+/* Marca-texto: a palavra continua branca e o ciano passa por trás dela
+   inteira, um pouco além da altura e da largura, como caneta marca-texto.
+   Ciano a 50% para o branco seguir legível. Só sobre fundo escuro. */
 .marca-texto {
   color: inherit;
   font-weight: 600;
-  background: linear-gradient(transparent 45%, color-mix(in srgb, var(--color-ciano) 60%, transparent) 45%, color-mix(in srgb, var(--color-ciano) 60%, transparent) 92%, transparent 92%);
-  padding-inline: 0.1em;
+  background: color-mix(in srgb, var(--color-ciano) 50%, transparent);
+  padding: 0.08em 0.22em;
+  margin-inline: -0.06em;
+  border-radius: 0.2em;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
