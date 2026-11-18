@@ -6,9 +6,10 @@ import Reveal from "@/components/Reveal";
 import Pricing from "@/components/Pricing";
 import Faq from "@/components/Faq";
 import BrowserFrame from "@/components/BrowserFrame";
-import FeatureVideo from "@/components/FeatureVideo";
+import FeatureList from "@/components/FeatureList";
+import FeatureTabs from "@/components/FeatureTabs";
 import {
-  SITE, SECURITY, PLANS, FAQ, BANK_INTEGRATIONS, OFX_FALLBACK, PRODUCT_BLOCKS, FEATURES, FOUNDER_OFFER, FOUNDERS,
+  SITE, SECURITY, PLANS, FAQ, BANK_INTEGRATIONS, OFX_FALLBACK, FOUNDER_OFFER, FOUNDERS,
   TRUST_LINE,
 } from "@/lib/site";
 import { COMPANY } from "@/lib/empresa";
@@ -97,65 +98,37 @@ export default function Home() {
 
       <Hero />
 
-      {/* Produto: quatro blocos com vídeo e, abaixo, o resto em grade compacta.
-          O pt maior abre espaço para o print do topo, que desce sobre esta seção. */}
-      <section id="funcionalidades" className="anchor bg-nuvem pb-20 pt-40 md:pb-28 md:pt-52">
+      {/* Funcionalidades: lista com detalhe e print da tela */}
+      <section id="funcionalidades" className="section anchor bg-nuvem">
         <div className="container-x">
-          <Reveal className="max-w-2xl">
+          <Reveal className="mx-auto max-w-2xl text-center">
             <span className="eyebrow">Funcionalidades</span>
-            <h2 className="mt-3 text-3xl font-bold text-ink md:text-5xl">O mês fechado sem planilha</h2>
-            <p className="mt-4 text-lg text-muted">
-              Do lançamento do dia ao resultado do mês, tudo no mesmo lugar e com os mesmos números.
-            </p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-ink md:text-4xl">
+              Da rotina financeira à visão do negócio
+            </h2>
+            <p className="mt-4 text-lg text-muted">Ferramentas que ligam o dia a dia às decisões da sua empresa.</p>
           </Reveal>
-
-          <div className="mt-16 space-y-20 md:space-y-28">
-            {PRODUCT_BLOCKS.map((b, i) => {
-              const Icon = b.icon;
-              return (
-                <Reveal key={b.label}>
-                  <div className="grid items-center gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
-                    <div className={i % 2 ? "lg:order-2" : ""}>
-                      <p className="flex items-center gap-2 text-sm font-semibold text-brand-700">
-                        <Icon size={18} aria-hidden /> {b.label}
-                      </p>
-                      <h3 className="mt-3 text-2xl font-bold tracking-tight text-ink md:text-3xl">{b.title}</h3>
-                      <p className="mt-4 leading-relaxed text-muted">{b.desc}</p>
-                      <ul className="mt-6 space-y-2.5">
-                        {b.points.map((p) => (
-                          <li key={p} className="flex items-start gap-2.5 text-ink-700">
-                            <span className="mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-brand-100 text-brand-700">
-                              <Check size={11} strokeWidth={3} aria-hidden />
-                            </span>
-                            {p}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <FeatureVideo src={b.video} alt={b.alt} />
-                  </div>
-                </Reveal>
-              );
-            })}
+          <div className="mx-auto mt-12 max-w-5xl">
+            <FeatureList />
           </div>
+        </div>
+      </section>
 
-          <Reveal className="mt-24 border-t border-slate-200 pt-12 md:mt-28">
-            <h3 className="text-xl font-bold tracking-tight text-ink">E também</h3>
-            <ul className="mt-8 grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
-              {FEATURES.map(({ icon: Icon, label, desc }) => (
-                <li key={label}>
-                  <Icon size={20} className="text-brand-600" aria-hidden />
-                  <h4 className="mt-3 font-semibold text-ink">{label}</h4>
-                  <p className="mt-1 text-sm leading-relaxed text-muted">{desc}</p>
-                </li>
-              ))}
-            </ul>
+      {/* Destaques: abas com texto e vídeo de cada funcionalidade */}
+      <section id="destaques" className="section anchor">
+        <div className="container-x">
+          <Reveal className="mx-auto max-w-2xl text-center">
+            <span className="eyebrow">Na prática</span>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-ink md:text-4xl">Veja o Numin funcionando</h2>
           </Reveal>
+          <div className="mt-12">
+            <FeatureTabs />
+          </div>
         </div>
       </section>
 
       {/* Integrações bancárias: caixas à esquerda, print da conciliação à direita */}
-      <section id="integracoes" className="section anchor">
+      <section id="integracoes" className="section anchor bg-nuvem">
         <div className="container-x grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <Reveal>
             <span className="eyebrow">Integrações bancárias</span>
@@ -212,7 +185,7 @@ export default function Home() {
       </section>
 
       {/* Segurança: fatos do produto, conferidos no código do app (lib/site.js, SECURITY) */}
-      <section id="seguranca" className="section anchor bg-nuvem">
+      <section id="seguranca" className="section anchor">
         <div className="container-x grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
           <Reveal className="lg:sticky lg:top-28 lg:self-start">
             <span className="eyebrow">Segurança</span>
@@ -253,7 +226,7 @@ export default function Home() {
       </section>
 
       {/* Como começar: três passos, sem prometer tempo que não medimos */}
-      <section id="comecar" className="section anchor">
+      <section id="comecar" className="section anchor bg-nuvem">
         <div className="container-x">
           <Reveal className="max-w-2xl">
             <span className="eyebrow">Como começar</span>
