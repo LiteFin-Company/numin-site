@@ -6,7 +6,7 @@ export default function FloatCard({ icon: Icon, title, className = "", delay, on
   const glass = onLight ? "border-white/30 bg-ink/45" : "border-white/25 bg-white/10";
   return (
     <div
-      className={`floaty absolute items-center gap-2 rounded-xl border ${glass} px-3 py-2 shadow-[0_14px_32px_-16px_rgba(9,30,66,0.55)] backdrop-blur-md ${className}`}
+      className={`floaty absolute items-center gap-2 rounded-xl border ${glass} px-3 py-2 shadow-[0_14px_32px_-16px_rgba(7,16,31,0.55)] backdrop-blur-md ${className}`}
       style={{ animationDelay: delay }}
     >
       <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-white/15 text-white">

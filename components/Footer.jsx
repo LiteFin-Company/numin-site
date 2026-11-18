@@ -33,9 +33,9 @@ export default function Footer() {
       <div className="container-x grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/numin-horizontal-branco.svg" alt="Numin" className="h-7 w-auto" />
+          <img src="/numin-horizontal-branco.svg" alt="Numin" className="h-11 w-auto" />
           <p className="mt-4 max-w-xs font-display text-base font-semibold text-white">
-            {SITE.shortSignature}
+            {SITE.tagline}
           </p>
           <p className="mt-2 max-w-xs text-sm leading-relaxed text-white/85">
             Todo o financeiro da sua empresa em um só lugar.

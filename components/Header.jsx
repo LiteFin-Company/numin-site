@@ -33,8 +33,8 @@ export default function Header() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={solid ? "/numin-horizontal-cor.svg" : "/numin-horizontal-branco.svg"}
-            alt="Numin — Controle financeiro"
-            className="h-7 w-auto"
+            alt="Numin — Controle financeiro inteligente"
+            className="h-9 w-auto"
           />
         </Link>
 
