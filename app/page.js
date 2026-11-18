@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowRight, Check, Handshake, MessagesSquare, Settings2, LockKeyhole } from "lucide-react";
+import { ArrowRight, Check, Handshake } from "lucide-react";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
@@ -67,16 +67,6 @@ const STEPS = [
   },
 ];
 
-const PARTNER_GAINS = [
-  { icon: Settings2, title: FOUNDER_OFFER.gains[0].title, desc: FOUNDER_OFFER.gains[0].desc },
-  { icon: MessagesSquare, title: FOUNDER_OFFER.gains[1].title, desc: FOUNDER_OFFER.gains[1].desc },
-  {
-    icon: LockKeyhole,
-    title: FOUNDER_OFFER.gains[2].title,
-    desc: `Plano ${FOUNDER_OFFER.plan} grátis até ${FOUNDER_OFFER.freeUntil} e, a partir de ${FOUNDER_OFFER.paidFrom}, ${FOUNDER_OFFER.price}${FOUNDER_OFFER.period} para sempre.`,
-  },
-];
-
 function TalkToFounders({ className = "" }) {
   if (!SITE.meetingUrl) return null;
   return (
@@ -113,7 +103,7 @@ export default function Home() {
       </section>
 
       {/* Integrações bancárias: caixas à esquerda, print da conciliação à direita */}
-      <section id="integracoes" className="section anchor bg-nuvem">
+      <section id="integracoes" className="section anchor">
         <div className="container-x grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <Reveal>
             <span className="eyebrow">Integrações bancárias</span>
@@ -170,7 +160,7 @@ export default function Home() {
       </section>
 
       {/* Segurança: fatos do produto, conferidos no código do app (lib/site.js, SECURITY) */}
-      <section id="seguranca" className="section anchor">
+      <section id="seguranca" className="section anchor bg-nuvem">
         <div className="container-x grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
           <Reveal className="lg:sticky lg:top-28 lg:self-start">
             <span className="eyebrow">Segurança</span>
@@ -211,7 +201,7 @@ export default function Home() {
       </section>
 
       {/* Como começar: três passos, sem prometer tempo que não medimos */}
-      <section id="comecar" className="section anchor bg-nuvem">
+      <section id="comecar" className="section anchor">
         <div className="container-x">
           <Reveal className="max-w-2xl">
             <span className="eyebrow">Como começar</span>
@@ -237,61 +227,50 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Parceiros Numin: dez vagas reais */}
+      {/* Parceiros Numin: dez vagas reais. À esquerda a oferta e o botão; à direita, o que vem junto e o que pedimos. */}
       <section id="parceiros" className="anchor bg-ink py-20 text-white md:py-28">
-        <div className="container-x grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+        <div className="container-x grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-20">
           <Reveal>
             <p className="flex items-center gap-2 text-sm font-semibold text-ciano">
-              <Handshake size={18} aria-hidden /> {FOUNDER_OFFER.name}
+              <Handshake size={18} aria-hidden />
+              <span className="tabnum">
+                {FOUNDER_OFFER.name} · {FOUNDER_OFFER.slots} vagas
+              </span>
             </p>
             <h2 className="mt-3 text-3xl font-bold text-white md:text-5xl">
-              <span className="tabnum">{FOUNDER_OFFER.slots}</span> empresas para construir o Numin com a gente
+              <span className="tabnum">{FOUNDER_OFFER.freeMonths}</span> meses grátis. Depois,{" "}
+              <span className="tabnum whitespace-nowrap">
+                {FOUNDER_OFFER.price}
+                {FOUNDER_OFFER.period}
+              </span>{" "}
+              para sempre.
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-white/85">
-              Para quem quer organizar o financeiro desde já e ajudar a decidir o que o Numin faz a seguir.
+              Plano {FOUNDER_OFFER.plan} para as <span className="tabnum">{FOUNDER_OFFER.slots}</span> primeiras empresas. Preço normal:{" "}
+              <span className="tabnum whitespace-nowrap">
+                {FOUNDER_OFFER.original}
+                {FOUNDER_OFFER.period}
+              </span>
+              .
             </p>
-            <div className="mt-8 rounded-panel border border-white/15 p-6">
-              <p className="text-sm text-white/85">Plano {FOUNDER_OFFER.plan}</p>
-              <p className="mt-1 text-2xl font-bold text-white">
-                Grátis até <span className="tabnum">{FOUNDER_OFFER.freeUntil}</span>
-              </p>
-              <p className="mt-3 flex flex-wrap items-baseline gap-x-2 text-white/85">
-                <span>A partir de {FOUNDER_OFFER.paidFrom},</span>
-                <span className="tabnum text-xl font-bold text-white">
-                  {FOUNDER_OFFER.price}
-                  {FOUNDER_OFFER.period}
-                </span>
-                <span>para sempre</span>
-                <span className="tabnum text-sm text-white/70 line-through">
-                  {FOUNDER_OFFER.original}
-                  {FOUNDER_OFFER.period}
-                </span>
-              </p>
-            </div>
-          </Reveal>
-          <Reveal>
-            <h3 className="text-lg font-semibold text-white">O que o parceiro ganha</h3>
-            <ul className="mt-6 space-y-7">
-              {PARTNER_GAINS.map(({ icon: Icon, title, desc }) => (
-                <li key={title} className="flex gap-4">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-card bg-white/10 text-ciano">
-                    <Icon size={19} aria-hidden />
-                  </span>
-                  <div>
-                    <h4 className="font-semibold text-white">{title}</h4>
-                    <p className="mt-1 leading-relaxed text-white/85">{desc}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-            <h3 className="mt-10 text-lg font-semibold text-white">O que pedimos</h3>
-            <p className="mt-3 leading-relaxed text-white/85">{FOUNDER_OFFER.ask}</p>
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <a href={SITE.signupUrl} className="btn btn-white btn-lg justify-center">
                 {FOUNDER_OFFER.cta} <ArrowRight size={18} aria-hidden />
               </a>
               <TalkToFounders className="btn btn-lg justify-center border border-white/30 text-white hover:bg-white/10" />
             </div>
+          </Reveal>
+          <Reveal className="rounded-panel border border-white/15 p-7 md:p-9">
+            <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-ciano">Você ganha</h3>
+            <ul className="mt-5 space-y-4">
+              {FOUNDER_OFFER.gains.map((gain) => (
+                <li key={gain} className="flex items-center gap-3 text-lg font-medium text-white">
+                  <Check size={20} className="shrink-0 text-ciano" aria-hidden /> {gain}
+                </li>
+              ))}
+            </ul>
+            <h3 className="mt-8 border-t border-white/15 pt-7 text-sm font-semibold uppercase tracking-[0.14em] text-ciano">Em troca</h3>
+            <p className="mt-3 leading-relaxed text-white/85">{FOUNDER_OFFER.ask}</p>
           </Reveal>
         </div>
       </section>

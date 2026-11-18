@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Building2, Check, Handshake } from "lucide-react";
-import { PLANS, SITE, FOUNDER_OFFER, ORG_ADDON } from "@/lib/site";
+import { Building2, Check } from "lucide-react";
+import { PLANS, SITE, ORG_ADDON } from "@/lib/site";
 
 export default function Pricing() {
   const [annual, setAnnual] = useState(false);
@@ -33,19 +33,14 @@ export default function Pricing() {
 
       <div className="mt-8 grid gap-6 lg:grid-cols-3">
         {PLANS.map((p) => {
-          const isFounder = p.name === FOUNDER_OFFER.plan;
           return (
             <div
               key={p.name}
               className={`card flex flex-col bg-white ${
-                isFounder || p.highlight ? "border-brand-600 shadow-float ring-1 ring-brand-600" : "shadow-raised"
+                p.highlight ? "border-brand-600 shadow-float ring-1 ring-brand-600" : "shadow-raised"
               }`}
             >
-              {isFounder ? (
-                <span className="mb-3 inline-flex w-fit items-center gap-1 rounded-full bg-brand-600 px-3 py-1 text-xs font-semibold text-white">
-                  <Handshake size={13} aria-hidden /> {FOUNDER_OFFER.name} · {FOUNDER_OFFER.slots} vagas
-                </span>
-              ) : p.highlight ? (
+              {p.highlight ? (
                 <span className="mb-3 inline-flex w-fit rounded-full bg-brand-600 px-3 py-1 text-xs font-semibold text-white">
                   Recomendado
                 </span>
@@ -53,33 +48,11 @@ export default function Pricing() {
 
               <h3 className="text-lg font-bold text-ink">{p.name}</h3>
 
-              {isFounder ? (
-                <>
-                  <div className="mt-3 flex items-baseline gap-2">
-                    <span className="text-3xl font-bold text-ink">Grátis</span>
-                    <span className="tabnum text-sm text-muted">até {FOUNDER_OFFER.freeUntil}</span>
-                  </div>
-                  <div className="mt-3 rounded-card border border-brand-100 bg-brand-50 px-4 py-3">
-                    <p className="text-xs font-medium text-brand-700">A partir de {FOUNDER_OFFER.paidFrom}</p>
-                    <p className="mt-0.5 flex flex-wrap items-baseline gap-x-2">
-                      <span className="tabnum text-xl font-bold text-ink">
-                        {FOUNDER_OFFER.price}
-                        <span className="text-sm font-semibold text-muted">{FOUNDER_OFFER.period}</span>
-                      </span>
-                      <span className="text-sm font-semibold text-brand-700">para sempre</span>
-                      <span className="tabnum text-sm text-muted line-through">{FOUNDER_OFFER.original}</span>
-                    </p>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="mt-3 flex items-baseline gap-1">
-                    <span className="tabnum text-3xl font-bold text-ink">{annual ? p.priceAnnual : p.price}</span>
-                    <span className="text-sm text-muted">{p.period}</span>
-                  </div>
-                  <p className="mt-1 text-xs text-muted">{annual ? "por mês, cobrado anualmente" : "cobrança mensal"}</p>
-                </>
-              )}
+              <div className="mt-3 flex items-baseline gap-1">
+                <span className="tabnum text-3xl font-bold text-ink">{annual ? p.priceAnnual : p.price}</span>
+                <span className="text-sm text-muted">{p.period}</span>
+              </div>
+              <p className="mt-1 text-xs text-muted">{annual ? "por mês, cobrado anualmente" : "cobrança mensal"}</p>
 
               <p className="mt-3 text-sm text-muted">{p.tagline}</p>
               <ul className="mb-6 mt-6 space-y-3">
@@ -109,9 +82,9 @@ export default function Pricing() {
               </p>
               <a
                 href={SITE.signupUrl}
-                className={`btn btn-lg mt-5 w-full ${isFounder || p.highlight ? "btn-primary" : "btn-ghost"}`}
+                className={`btn btn-lg mt-5 w-full ${p.highlight ? "btn-primary" : "btn-ghost"}`}
               >
-                {isFounder ? FOUNDER_OFFER.cta : p.cta}
+                {p.cta}
               </a>
             </div>
           );

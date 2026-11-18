@@ -38,9 +38,9 @@ export default function Header() {
             <span>
               <strong className="font-semibold">{FOUNDER_OFFER.name}:</strong>{" "}
               <span className="hidden sm:inline">
-                {FOUNDER_OFFER.slots} empresas com implantação feita por nós e preço travado.
+                {FOUNDER_OFFER.slots} vagas com {FOUNDER_OFFER.freeMonths} meses grátis e depois {FOUNDER_OFFER.price}{FOUNDER_OFFER.period} para sempre.
               </span>
-              <span className="sm:hidden">{FOUNDER_OFFER.slots} vagas com preço travado.</span>
+              <span className="sm:hidden">{FOUNDER_OFFER.freeMonths} meses grátis, depois {FOUNDER_OFFER.price}{FOUNDER_OFFER.period}.</span>
             </span>
             <a href="#parceiros" className="inline-flex shrink-0 items-center gap-1 font-semibold text-ciano underline-offset-4 hover:underline">
               Saiba mais <ArrowRight size={14} aria-hidden />
