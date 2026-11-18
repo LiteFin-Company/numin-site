@@ -5,9 +5,7 @@ import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
 import Pricing from "@/components/Pricing";
 import Faq from "@/components/Faq";
-import BrowserFrame from "@/components/BrowserFrame";
 import FeatureList from "@/components/FeatureList";
-import FeatureTabs from "@/components/FeatureTabs";
 import {
   SITE, SECURITY, PLANS, FAQ, BANK_INTEGRATIONS, OFX_FALLBACK, FOUNDER_OFFER, FOUNDERS,
   TRUST_LINE,
@@ -114,19 +112,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Destaques: abas com texto e vídeo de cada funcionalidade */}
-      <section id="destaques" className="section anchor">
-        <div className="container-x">
-          <Reveal className="mx-auto max-w-2xl text-center">
-            <span className="eyebrow">Na prática</span>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-ink md:text-4xl">Veja o Numin funcionando</h2>
-          </Reveal>
-          <div className="mt-12">
-            <FeatureTabs />
-          </div>
-        </div>
-      </section>
-
       {/* Integrações bancárias: caixas à esquerda, print da conciliação à direita */}
       <section id="integracoes" className="section anchor bg-nuvem">
         <div className="container-x grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
@@ -170,7 +155,7 @@ export default function Home() {
             </p>
           </Reveal>
           <Reveal>
-            <BrowserFrame className="shadow-float">
+            <div className="overflow-hidden rounded-panel border border-slate-200 bg-white shadow-float">
               <Image
                 src="/funcionalidades/conciliacao.webp"
                 alt="Tela de conciliação do Numin com as linhas do extrato e as sugestões de correspondência para confirmar"
@@ -179,7 +164,7 @@ export default function Home() {
                 sizes="(min-width: 1024px) 640px, 100vw"
                 className="block h-auto w-full"
               />
-            </BrowserFrame>
+            </div>
           </Reveal>
         </div>
       </section>
