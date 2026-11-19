@@ -92,9 +92,9 @@ export default function Home() {
           <Reveal className="mx-auto max-w-2xl text-center">
             <span className="eyebrow">Funcionalidades</span>
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-ink md:text-4xl">
-              Tudo o que o financeiro da sua empresa precisa
+              Seu financeiro em um só lugar
             </h2>
-            <p className="mt-4 text-lg text-muted">Do pagamento de hoje à previsão do mês que vem.</p>
+            <p className="mt-4 text-lg text-muted">Contas a pagar e receber, cartão, conciliação e relatórios para você saber sempre como está o caixa.</p>
           </Reveal>
           <div className="mx-auto mt-12 max-w-5xl">
             <FeatureList />
