@@ -6,6 +6,7 @@ import Reveal from "@/components/Reveal";
 import Pricing from "@/components/Pricing";
 import Faq from "@/components/Faq";
 import FeatureList from "@/components/FeatureList";
+import PartnerForm from "@/components/PartnerForm";
 import {
   SITE, SECURITY, PLANS, FAQ, BANK_INTEGRATIONS, OFX_FALLBACK, FOUNDER_OFFER, FOUNDERS,
   TRUST_LINE,
@@ -254,9 +255,7 @@ export default function Home() {
               .
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <a href={SITE.signupUrl} className="btn btn-white btn-lg justify-center">
-                {FOUNDER_OFFER.cta} <ArrowRight size={18} aria-hidden />
-              </a>
+              <PartnerForm className="btn btn-white btn-lg justify-center" />
               <TalkToFounders className="btn btn-lg justify-center border border-white/30 text-white hover:bg-white/10" />
             </div>
           </Reveal>
