@@ -96,7 +96,7 @@ const BASES_LEGAIS = [
   },
   {
     title: "Responder a contatos e prestar suporte",
-    dados: "Nome, e-mail, empresa e o conteúdo da mensagem que você nos enviar.",
+    dados: "Nome, e-mail, empresa e o conteúdo da mensagem que você nos enviar. No formulário Parceiros Numin do site, também WhatsApp, ramo de atividade, número de pessoas na empresa, como controla o financeiro hoje e, se você informar, o banco principal e o que mais incomoda no financeiro.",
     base: "Procedimentos preliminares ou execução de contrato (art. 7º, V) e legítimo interesse (art. 7º, IX) em responder a quem nos procura.",
   },
   {
@@ -131,8 +131,8 @@ const SUBOPERADORES = [
   {
     title: "Resend",
     rows: [
-      ["O que faz", "Envia os e-mails de serviço (redefinição de senha, convites e avisos)."],
-      ["Dados", "E-mail do destinatário e o conteúdo da mensagem (nome da organização, nome de quem convidou e link de acesso)."],
+      ["O que faz", "Envia os e-mails de serviço (redefinição de senha, convites e avisos) e entrega ao nosso e-mail o formulário Parceiros Numin do site."],
+      ["Dados", "E-mail do destinatário e o conteúdo da mensagem (nome da organização, nome de quem convidou e link de acesso). No formulário, os dados que você preencheu."],
       ["Onde", "Estados Unidos."],
     ],
   },
@@ -140,7 +140,7 @@ const SUBOPERADORES = [
     title: "Vercel",
     rows: [
       ["O que faz", "Hospeda este site institucional (numin.com.br)."],
-      ["Dados", "Dados técnicos da visita necessários para entregar as páginas: endereço IP, navegador e página acessada."],
+      ["Dados", "Dados técnicos da visita necessários para entregar as páginas: endereço IP, navegador e página acessada. Também processa o envio do formulário Parceiros Numin."],
       ["Onde", "Estados Unidos e rede global de distribuição."],
     ],
   },
@@ -262,6 +262,12 @@ const SECTIONS = [
         <p>
           Se você escrever para nós, trataremos o seu nome, e-mail, empresa e o conteúdo da mensagem para
           responder.
+        </p>
+        <p>
+          Se você preencher o formulário Parceiros Numin no site, trataremos também o seu WhatsApp, o ramo de
+          atividade, o número de pessoas na empresa, como você controla o financeiro hoje e, se informar, o banco
+          principal e o que mais incomoda no financeiro. Usamos esses dados só para falar com você sobre a oferta.
+          O envio passa pela Vercel, que hospeda o site, e pelo Resend, que entrega a mensagem ao nosso e-mail.
         </p>
       </>
     ),
