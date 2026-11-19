@@ -123,7 +123,7 @@ export default function PartnerForm({ className = "" }) {
             <div className="mt-4">
               <p className="flex gap-3 text-ink-700">
                 <CheckCircle2 size={22} className="mt-0.5 shrink-0 text-positive" aria-hidden />
-                Respondemos em até 1 dia útil, pelo WhatsApp ou por e-mail.
+                Vamos falar com você pelo WhatsApp ou por e-mail.
               </p>
               <p className="mt-6 text-sm text-muted">Se quiser, já pode ir conhecendo o Numin.</p>
               <div className="mt-3 flex flex-col gap-3 sm:flex-row">
@@ -137,7 +137,7 @@ export default function PartnerForm({ className = "" }) {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="mt-5 space-y-4">
-              <p className="text-sm text-muted">Respondemos em até 1 dia útil, pelo WhatsApp ou por e-mail.</p>
+              <p className="text-sm text-muted">Vamos falar com você pelo WhatsApp ou por e-mail.</p>
 
               <Field label="Nome">
                 <input name="name" required maxLength={120} autoComplete="name" className={`${fieldClass} h-11`} />
