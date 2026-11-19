@@ -95,6 +95,11 @@ const BASES_LEGAIS = [
     base: "Cumprimento de obrigação legal (art. 7º, II): o art. 15 do Marco Civil da Internet (Lei nº 12.965/2014) exige a guarda desses registros por 6 meses.",
   },
   {
+    title: "Medir as visitas ao site institucional",
+    dados: "Página visitada, site de origem, país, tipo de aparelho, navegador e sistema operacional, contados pelo Vercel Analytics sem cookies e sem identificar o visitante.",
+    base: "Legítimo interesse (art. 7º, IX) em saber quais conteúdos do site são úteis e melhorá-los.",
+  },
+  {
     title: "Responder a contatos e prestar suporte",
     dados: "Nome, e-mail, empresa e o conteúdo da mensagem que você nos enviar. No formulário Parceiros Numin do site, também WhatsApp, ramo de atividade, número de pessoas na empresa, como controla o financeiro hoje e, se você informar, o banco principal e o que mais incomoda no financeiro.",
     base: "Procedimentos preliminares ou execução de contrato (art. 7º, V) e legítimo interesse (art. 7º, IX) em responder a quem nos procura.",
@@ -140,7 +145,7 @@ const SUBOPERADORES = [
     title: "Vercel",
     rows: [
       ["O que faz", "Hospeda este site institucional (numin.com.br)."],
-      ["Dados", "Dados técnicos da visita necessários para entregar as páginas: endereço IP, navegador e página acessada. Também processa o envio do formulário Parceiros Numin."],
+      ["Dados", "Dados técnicos da visita necessários para entregar as páginas: endereço IP, navegador e página acessada. Também processa o envio do formulário Parceiros Numin e a contagem de visitas do site (Vercel Analytics, sem cookies)."],
       ["Onde", "Estados Unidos e rede global de distribuição."],
     ],
   },
@@ -545,7 +550,10 @@ const SECTIONS = [
       <>
         <H3>Site institucional</H3>
         <p>
-          Este site não usa cookies e não usa ferramentas de análise de audiência, de publicidade ou de rastreamento.
+          Este site não usa cookies nem ferramentas de publicidade ou de rastreamento entre sites. Para saber quantas
+          pessoas visitam o site e quais páginas leem, usamos o Vercel Analytics, que conta as visitas sem cookies. Ele
+          registra a página visitada, o site de origem, o país, o tipo de
+          aparelho, o navegador e o sistema operacional, e não identifica quem você é.
         </p>
         <H3>Sistema</H3>
         <p>
@@ -663,7 +671,7 @@ export default function PrivacidadePage() {
               <li>Os dados financeiros que a sua empresa coloca no Numin são dela. Nós os tratamos só para prestar o serviço.</li>
               <li>Não vendemos dados e não os usamos para publicidade.</li>
               <li>A conexão com o banco é pelo arquivo OFX que você importa. Nunca pedimos a senha do seu banco.</li>
-              <li>O site não usa cookies nem rastreamento. O sistema usa só um cookie de sessão, necessário para manter você conectado, e nenhum cookie de rastreamento.</li>
+              <li>O site não usa cookies nem rastreamento entre sites; conta as visitas com o Vercel Analytics, sem cookies. O sistema usa só um cookie de sessão, necessário para manter você conectado, e nenhum cookie de rastreamento.</li>
               <li>Você pode exportar os seus dados e excluir a sua organização.</li>
             </ul>
             <p className="mt-3 text-sm text-muted">Este resumo não substitui o texto completo abaixo.</p>
