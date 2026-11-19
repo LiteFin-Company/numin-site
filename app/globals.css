@@ -25,6 +25,9 @@
   /* Ciano: monograma e destaques sobre fundo escuro. Sobre branco dá 1,6:1,
      então nunca é texto nem ícone em fundo claro. */
   --color-ciano: #00d9ff;
+  /* Ciano clareado (70% ciano + 30% branco) para texto pequeno sobre o cobalto
+     do hero: o ciano puro dá 4,1:1 em brand-600; este dá 4,6:1 (AA). */
+  --color-ciano-texto: #4ce4ff;
   --color-folha: #b5f6ff;     /* azul-folha: tags e estados suaves */
 
   --color-ink: #07101f;      /* marinho — títulos */
