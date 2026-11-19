@@ -1,4 +1,5 @@
 import { Archivo } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import Header from "@/components/Header";
 import { SITE } from "@/lib/site";
@@ -57,6 +58,8 @@ export default function RootLayout({ children }) {
       <body className="flex min-h-full flex-col bg-white">
         <Header />
         <main className="flex-1">{children}</main>
+        {/* Vercel Analytics: contagem de visitas sem cookies (script e envio no próprio domínio). */}
+        <Analytics />
       </body>
     </html>
   );
